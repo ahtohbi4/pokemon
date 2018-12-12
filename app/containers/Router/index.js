@@ -1,4 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import App from '@containers/App';
 
@@ -6,9 +8,16 @@ import NotFoundPage from '@containers/NotFoundPage';
 import PokemonPage from '@containers/PokemonPage';
 import PokemonsPage from '@containers/PokemonsPage';
 
+import * as actions from './actions';
+import selectRouter from './selectors';
+
 const { location: { hash: initialHash } } = window;
 
-export default class Router extends PureComponent {
+class Router extends PureComponent {
+    static mapStateToProps = selectRouter();
+
+    static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
+
     static parseHash(hash) {
         return hash
             .replace(/^#/, '')
@@ -27,15 +36,15 @@ export default class Router extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.state = {
-            hash: Router.parseHash(initialHash),
-        };
+        const { changeLocation } = props;
+
+        changeLocation(Router.parseHash(initialHash));
 
         this.hanleHashChange = this.hanleHashChange.bind(this);
     }
 
     get route() {
-        const { hash: { page } } = this.state;
+        const { router: { page } } = this.props;
 
         switch (page) {
             case 'pokemons':
@@ -59,18 +68,24 @@ export default class Router extends PureComponent {
 
     hanleHashChange(event) {
         const { target: { location: { hash } } } = event;
+        const { changeLocation } = this.props;
 
-        this.setState({ hash: Router.parseHash(hash) });
+        changeLocation(Router.parseHash(hash));
     }
 
     render() {
-        const { hash: params } = this.state;
+        const { router } = this.props;
         const MathcedRoute = this.route;
 
         return (
             <App>
-                <MathcedRoute {...this.props} router={{ params }} />
+                <MathcedRoute {...this.props} router={router} />
             </App>
         );
     }
 }
+
+export default connect(
+    Router.mapStateToProps,
+    Router.mapDispatchToProps,
+)(Router);

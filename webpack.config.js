@@ -42,8 +42,11 @@ module.exports = {
 
   resolve: {
     alias: {
+      '@constants': path.resolve(baseDir, 'app/constants'),
+
       '@components': path.resolve(baseDir, 'app/components/'),
       '@containers': path.resolve(baseDir, 'app/containers/'),
+      '@utils': path.resolve(baseDir, 'app/utils/'),
     },
   },
 };
