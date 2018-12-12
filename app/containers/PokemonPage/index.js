@@ -1,8 +1,29 @@
 import React, { Fragment, PureComponent } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class PokemonPage extends PureComponent {
+import * as actions from './actions';
+import selectPokemonPage from './selectors';
+
+class PokemonPage extends PureComponent {
+    static mapStateToProps = selectPokemonPage();
+
+    static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
+
+    componentDidMount() {
+        const { pokemon: { data }, router: { params: { id } }, getPokemon } = this.props;
+
+        if (!data) {
+            getPokemon(id);
+        }
+    }
+
     render() {
-        const { router: { params: { id } } } = this.props;
+        const { pokemon: { data }, router: { params: { id } } } = this.props;
+
+        if (!data) {
+            return null;
+        }
 
         return (
             <Fragment>
@@ -15,3 +36,8 @@ export default class PokemonPage extends PureComponent {
         );
     }
 }
+
+export default connect(
+    PokemonPage.mapStateToProps,
+    PokemonPage.mapDispatchToProps,
+)(PokemonPage);
