@@ -6,6 +6,8 @@ import {
     GET_SPECIES_FAILURE,
     GET_SPECIES_REQUEST,
     GET_SPECIES_SUCCESS,
+
+    RESET_POKEMON_DATA,
 } from './constants';
 
 export const getPokemon = (slug) => ({
@@ -36,4 +38,8 @@ export const getSpeciesSuccess = (data) => ({
 export const getSpeciesFailure = (error) => ({
     type: GET_SPECIES_FAILURE,
     payload: error,
+});
+
+export const resetPokemon = () => ({
+    type: RESET_POKEMON_DATA,
 });

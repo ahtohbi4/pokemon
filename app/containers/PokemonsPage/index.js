@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import selectPokemonsPage from './selectors';
 
+import Title from '@components/Title';
+
+import PokemonsList from './components/PokemonsList';
+
 class PokemonsPage extends PureComponent {
     static mapStateToProps = selectPokemonsPage();
 
@@ -20,25 +24,14 @@ class PokemonsPage extends PureComponent {
 
     render() {
         const { pokemons } = this.props;
-        const { data } = pokemons;
-
-        if (!data) {
-            return null;
-        }
 
         return (
             <Fragment>
-                <h1>Pokemons</h1>
+                <Title>
+                    Pokemons
+                </Title>
 
-                <ul>
-                    {data.map(({ name }) => (
-                        <li key={name}>
-                            <a href={`#page=pokemon&id=${name}`}>
-                                {name}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <PokemonsList pokemons={pokemons} />
             </Fragment>
         );
     }

@@ -2,8 +2,14 @@ import React, { Fragment, PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { convertToTitle } from '@utils/formatString';
+
 import * as actions from './actions';
 import selectPokemonPage from './selectors';
+
+import Title from '@components/Title';
+
+import Pokemon from './components/Pokemon';
 
 class PokemonPage extends PureComponent {
     static mapStateToProps = selectPokemonPage();
@@ -11,23 +17,30 @@ class PokemonPage extends PureComponent {
     static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
 
     componentDidMount() {
-        const { pokemon: { data }, router: { params: { id } }, getPokemon } = this.props;
+        const { router: { params: { id } }, getPokemon } = this.props;
 
-        if (!data) {
-            getPokemon(id);
-        }
+        getPokemon(id);
+    }
+
+    componentWillUnmount() {
+        const { resetPokemon } = this.props;
+
+        resetPokemon();
     }
 
     render() {
-        const { pokemon: { data }, router: { params: { id } } } = this.props;
-
-        if (!data) {
-            return null;
-        }
+        const { pokemon, router: { params: { id } }, species } = this.props;
 
         return (
             <Fragment>
-                <h1>Pokemon {id}</h1>
+                <Title>
+                    {convertToTitle(id)}
+                </Title>
+
+                <Pokemon
+                    pokemon={pokemon}
+                    species={species}
+                />
 
                 <p>
                     <a href="#page=pokemons">All pokemons</a>

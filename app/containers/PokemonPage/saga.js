@@ -1,7 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import api from '@utils/api';
-import interpolate from '@utils/interpolate';
+import { interpolate } from '@utils/formatString';
 
 import {
     API_GET_POKEMON,
