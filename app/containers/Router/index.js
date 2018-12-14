@@ -18,19 +18,23 @@ class Router extends PureComponent {
 
     static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
 
-    static parseHash(hash) {
-        return hash
-            .replace(/^#/, '')
-            .split('&')
-            .filter((pair) => (pair !== ''))
-            .reduce((result, pair) => {
-                const [key, value] = pair.split('=');
+    static parse(hash) {
+        const [url = '/', query = ''] = hash.replace(/^#!/, '').split('?').filter((item) => (item !== ''));
 
-                return {
-                    ...result,
-                    [key]: (value === undefined) ? true : value,
-                };
-            }, {});
+        return {
+            query: query
+                .split('&')
+                .filter((pair) => (pair !== ''))
+                .reduce((result, pair) => {
+                    const [key, value] = pair.split('=');
+
+                    return {
+                        ...result,
+                        [key]: (value === undefined) ? true : value,
+                    };
+                }, {}),
+            url: url.replace(/([^/])$/g, (matches, lastSymbol) => `${lastSymbol}/`),
+        };
     }
 
     constructor(props) {
@@ -38,19 +42,20 @@ class Router extends PureComponent {
 
         const { changeLocation } = props;
 
-        changeLocation(Router.parseHash(initialHash));
+        changeLocation(Router.parse(initialHash));
 
         this.hanleHashChange = this.hanleHashChange.bind(this);
     }
 
     get route() {
-        const { router: { page } } = this.props;
+        const { router: { url } } = this.props;
 
-        switch (page) {
-            case 'pokemons':
+        switch (url) {
+            case '/':
+            case '/pokemons/':
                 return PokemonsPage;
 
-            case 'pokemon':
+            case '/pokemon/':
                 return PokemonPage;
 
             default:
@@ -70,7 +75,7 @@ class Router extends PureComponent {
         const { target: { location: { hash } } } = event;
         const { changeLocation } = this.props;
 
-        changeLocation(Router.parseHash(hash));
+        changeLocation(Router.parse(hash));
     }
 
     render() {

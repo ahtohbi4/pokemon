@@ -17,7 +17,7 @@ class PokemonPage extends PureComponent {
     static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
 
     componentDidMount() {
-        const { router: { params: { id } }, getPokemon } = this.props;
+        const { router: { query: { id } }, getPokemon } = this.props;
 
         getPokemon(id);
     }
@@ -29,7 +29,7 @@ class PokemonPage extends PureComponent {
     }
 
     render() {
-        const { pokemon, router: { params: { id } }, species } = this.props;
+        const { pokemon, router: { query: { id } }, species } = this.props;
 
         return (
             <Fragment>
@@ -43,7 +43,7 @@ class PokemonPage extends PureComponent {
                 />
 
                 <p>
-                    <a href="#page=pokemons">All pokemons</a>
+                    <a href="#!/">All pokemons</a>
                 </p>
             </Fragment>
         );

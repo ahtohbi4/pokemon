@@ -33,7 +33,7 @@ const PokemonsList = ({ pokemons: { data, error, isLoading } }) => {
         <List>
             {data.map(({ name }) => (
                 <Item key={name}>
-                    <a href={`#page=pokemon&id=${name}`}>
+                    <a href={`#!/pokemon/?id=${name}`}>
                         {name}
                     </a>
                 </Item>
