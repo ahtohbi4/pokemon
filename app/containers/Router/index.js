@@ -2,16 +2,21 @@ import React, { Fragment, PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import App from '@containers/App';
-
-import NotFoundPage from '@containers/NotFoundPage';
-import PokemonPage from '@containers/PokemonPage';
-import PokemonsPage from '@containers/PokemonsPage';
-
 import * as actions from './actions';
 import selectRouter from './selectors';
 
+import Redirect from './components/Redirect';
+import Route from './components/Route';
+import RouterContext from './components/RouterContext';
+import Switch from './components/Switch';
+
 const { location: { hash: initialHash } } = window;
+
+export {
+    Redirect,
+    Route,
+    Switch,
+};
 
 class Router extends PureComponent {
     static mapStateToProps = selectRouter();
@@ -19,7 +24,7 @@ class Router extends PureComponent {
     static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
 
     static parse(hash) {
-        const [url = '/', query = ''] = hash.replace(/^#!/, '').split('?').filter((item) => (item !== ''));
+        const [pathname = '/', query = ''] = hash.replace(/^#!/, '').split('?').filter((item) => (item !== ''));
 
         return {
             query: query
@@ -33,7 +38,7 @@ class Router extends PureComponent {
                         [key]: (value === undefined) ? true : value,
                     };
                 }, {}),
-            url: url.replace(/([^/])$/g, (matches, lastSymbol) => `${lastSymbol}/`),
+            pathname: pathname.replace(/([^/])$/g, (matches, lastSymbol) => `${lastSymbol}/`),
         };
     }
 
@@ -45,22 +50,6 @@ class Router extends PureComponent {
         changeLocation(Router.parse(initialHash));
 
         this.hanleHashChange = this.hanleHashChange.bind(this);
-    }
-
-    get route() {
-        const { router: { url } } = this.props;
-
-        switch (url) {
-            case '/':
-            case '/pokemons/':
-                return PokemonsPage;
-
-            case '/pokemon/':
-                return PokemonPage;
-
-            default:
-                return NotFoundPage;
-        }
     }
 
     componentDidMount() {
@@ -79,13 +68,12 @@ class Router extends PureComponent {
     }
 
     render() {
-        const { router } = this.props;
-        const MathcedRoute = this.route;
+        const { children, router } = this.props;
 
         return (
-            <App>
-                <MathcedRoute {...this.props} router={router} />
-            </App>
+            <RouterContext.Provider value={{ router }}>
+                {children}
+            </RouterContext.Provider>
         );
     }
 }

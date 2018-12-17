@@ -5,6 +5,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const baseDir = process.cwd();
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
+
   entry: './app',
 
   output: {
