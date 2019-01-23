@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@Constants": ["app/constants"],
+
+      "@Components/*": ["app/components/*"],
+      "@Containers/*": ["app/containers/*"],
+      "@Utils/*": ["app/utils/*"]
+    },
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "target": "es2015",
+    "module": "es2015",
+    "strict": true,
+    "jsx": "react"
+  },
+  "include": [
+    "app/*"
+  ],
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
+}

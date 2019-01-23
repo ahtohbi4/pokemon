@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const baseDir = process.cwd();
 
@@ -18,19 +19,13 @@ module.exports = {
     rules: [
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-          },
-        ],
+        loader: 'html-loader',
       },
 
       {
-        test: /\.js$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        loader: 'babel-loader',
       },
     ],
   },
@@ -40,15 +35,22 @@ module.exports = {
       template: './app/index.html',
       filename: './index.html',
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 
   resolve: {
     alias: {
-      '@constants': path.resolve(baseDir, 'app/constants'),
+      '@Constants': path.resolve(baseDir, 'app/constants'),
 
-      '@components': path.resolve(baseDir, 'app/components/'),
-      '@containers': path.resolve(baseDir, 'app/containers/'),
-      '@utils': path.resolve(baseDir, 'app/utils/'),
+      '@Components': path.resolve(baseDir, 'app/components/'),
+      '@Containers': path.resolve(baseDir, 'app/containers/'),
+      '@Utils': path.resolve(baseDir, 'app/utils/'),
     },
+    extensions: [
+        ".js",
+        ".json",
+        ".ts",
+        ".tsx"
+    ],
   },
 };
