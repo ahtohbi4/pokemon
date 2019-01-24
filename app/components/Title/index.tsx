@@ -1,10 +1,10 @@
-import React, { memo } from 'react';
+import React, { ReactNode, memo } from 'react';
 
 import { Container } from './UIComponents';
 
 interface TitleProps {
-    children: object,
-    level: string,
+    children: ReactNode,
+    level: number,
 }
 
 const Title = ({ children, level }: TitleProps) => (

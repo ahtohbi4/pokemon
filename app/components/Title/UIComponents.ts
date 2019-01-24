@@ -12,6 +12,10 @@ export const Container = styled.div`
                     font-family: ${theme.font.secondary};
                     font-size: 1.75rem;
                     font-weight: 400;
+
+                    ${media.phone`
+                        margin: .5rem 0;
+                    `};
                 `;
 
             case 2:

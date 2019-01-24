@@ -9,7 +9,7 @@ import Title from '@Components/Title';
 
 import PokemonsList from './components/PokemonsList';
 
-interface PokemonsPagePropsType {
+interface PokemonsPageProps {
     pokemons: {
         data: [],
         error: any,
@@ -19,7 +19,7 @@ interface PokemonsPagePropsType {
     getPokemonsList: () => void,
 }
 
-class PokemonsPage extends PureComponent<PokemonsPagePropsType> {
+class PokemonsPage extends PureComponent<PokemonsPageProps> {
     static mapStateToProps = selectPokemonsPage;
 
     static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);

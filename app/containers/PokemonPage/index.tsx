@@ -11,7 +11,14 @@ import Title from '@Components/Title';
 
 import Pokemon from './components/Pokemon';
 
-class PokemonPage extends PureComponent {
+import { Router } from '@Containers/Router/types';
+
+interface PokemonPageProps {
+    getPokemon: (id: string) => void;
+    resetPokemon: () => void;
+}
+
+class PokemonPage extends PureComponent<PokemonPageProps> {
     static mapStateToProps = selectPokemonPage;
 
     static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);

@@ -75,7 +75,7 @@ class Router extends PureComponent<RouterPropsType> {
         window.removeEventListener('hashchange', this.handleHashChange);
     }
 
-    private handleHashChange(event) {
+    private handleHashChange(event: HashChangeEvent) {
         const { target: { location: { hash } } } = event;
         const { changeLocation } = this.props;
 
