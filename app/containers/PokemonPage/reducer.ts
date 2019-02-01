@@ -12,12 +12,12 @@ import {
 } from './constants';
 import {
     PokemonRequestType,
-    SpeciesListRequestType,
+    SpeciesRequestType,
 } from './types';
 
 export interface StoreType {
     pokemon: PokemonRequestType,
-    species: SpeciesListRequestType,
+    species: SpeciesRequestType,
 }
 
 const initialState: StoreType = {

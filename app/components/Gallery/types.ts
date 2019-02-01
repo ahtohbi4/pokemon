@@ -1,6 +1,6 @@
-export interface Picture {
+export interface PictureType {
     alias: string,
     url: string,
 }
 
-export type PicturesList = Array<Picture>;
+export type PicturesListType = Array<PictureType>;

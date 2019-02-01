@@ -1,11 +1,17 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
+
+import { SpeciesRequestType } from '../../types';
 
 import Loader from '@Components/Loader';
 import Title from '@Components/Title';
 
 import { Name } from './UIComponents';
 
-const Species = ({ species }) => {
+interface SpeciesPropsType {
+    species: SpeciesRequestType,
+}
+
+const Species: FC<SpeciesPropsType> = ({ species }) => {
     const { data, error, isLoading } = species;
 
     if (isLoading) {
@@ -30,7 +36,7 @@ const Species = ({ species }) => {
 
     return (
         <div>
-            <Title level={2}>
+            <Title tagName="h2">
                 Species
             </Title>
 

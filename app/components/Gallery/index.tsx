@@ -11,6 +11,8 @@ interface GalleryProps {
     pictures: PicturesList,
 }
 
+export * from './types';
+
 const Gallery = ({ pictures }: GalleryProps) => (
     <Container>
         <Title tagName="h2">

@@ -1,6 +1,8 @@
 export interface RouteType {
     pathname: string|undefined,
-    query: object,
+    query: {
+        [key: string]: string,
+    },
 }
 
 export interface RouterType {

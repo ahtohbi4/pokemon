@@ -9,11 +9,25 @@ export interface RequestedDataType {
 }
 
 export interface PokemonType {
+    abilities: Array<{
+        ability: {
+            name: string,
+        },
+        is_hidden: boolean,
+    }>,
+    height: number,
     name: string,
+    sprites: {
+        [key: string]: string,
+    },
+    weight: number,
 }
 
 export type PokemonsListType = Array<PokemonType>;
 
-export interface SpeciesType {}
-
-export type SpeciesListType = Array<SpeciesType>;
+export interface SpeciesType {
+    color: {
+        name: string,
+    },
+    name: string,
+}

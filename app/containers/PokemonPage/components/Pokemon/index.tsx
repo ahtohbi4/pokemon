@@ -1,14 +1,19 @@
 import React, { FC, Fragment, memo } from 'react';
 
-import Gallery from '@Components/Gallery';
+import {
+    PokemonRequestType,
+    SpeciesRequestType,
+} from '../../types';
+
+import Gallery, { PicturesListType } from '@Components/Gallery';
 import Loader from '@Components/Loader';
 import Title from '@Components/Title';
 
 import Species from '../Species';
 
 interface PokemonPropsType {
-    pokemon: {},
-    species: {},
+    pokemon: PokemonRequestType,
+    species: SpeciesRequestType,
 }
 
 const Pokemon: FC<PokemonPropsType> = ({ pokemon, species }) => {
@@ -64,7 +69,7 @@ const Pokemon: FC<PokemonPropsType> = ({ pokemon, species }) => {
 
             <div>
                 <Gallery
-                    pictures={Object.entries(sprites).reduce((result, [alias, url]) => {
+                    pictures={Object.entries(sprites).reduce((result: PicturesListType, [alias, url]) => {
                         if (!url) {
                             return result;
                         }

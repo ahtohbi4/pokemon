@@ -8,7 +8,7 @@ import * as actions from './actions';
 import selectPokemonPage from './selectors';
 import {
     PokemonRequestType,
-    SpeciesListRequestType,
+    SpeciesRequestType,
 } from './types';
 
 import Title from '@Components/Title';
@@ -20,7 +20,7 @@ import { RouterType } from '@Containers/Router/types';
 interface PokemonPageProps {
     pokemon: PokemonRequestType,
     router: RouterType,
-    species: SpeciesListRequestType,
+    species: SpeciesRequestType,
 
     getPokemon: (id: string) => void;
     resetPokemon: () => void;

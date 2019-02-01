@@ -1,13 +1,13 @@
 import {
     PokemonType,
     RequestedDataType,
-    SpeciesListType,
+    SpeciesType,
 } from '@Types';
 
 export interface PokemonRequestType extends RequestedDataType {
     data: PokemonType|null,
 }
 
-export interface SpeciesListRequestType extends RequestedDataType {
-    data: SpeciesListType|null,
+export interface SpeciesRequestType extends RequestedDataType {
+    data: SpeciesType|null,
 }

@@ -1,7 +1,7 @@
 import {
     PokemonType,
-    SpeciesListType,
-} from '../../types';
+    SpeciesType,
+} from '@Types';
 
 import {
     GET_POKEMON_FAILURE,
@@ -57,10 +57,10 @@ export const getSpecies = (slug: string): GetSpeciesType => ({
 
 interface GetSpeciesSuccessType {
     type: string,
-    payload: SpeciesListType,
+    payload: SpeciesType,
 }
 
-export const getSpeciesSuccess = (data: SpeciesListType): GetSpeciesSuccessType => ({
+export const getSpeciesSuccess = (data: SpeciesType): GetSpeciesSuccessType => ({
     type: GET_SPECIES_SUCCESS,
     payload: data,
 });
