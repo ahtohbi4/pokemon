@@ -2,15 +2,14 @@ import React, { Fragment, PureComponent } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-    PokemonType,
-    SpeciesListType,
-} from '../../types';
-
 import { convertToTitle } from '@Utils/formatString';
 
 import * as actions from './actions';
 import selectPokemonPage from './selectors';
+import {
+    PokemonRequestType,
+    SpeciesListRequestType,
+} from './types';
 
 import Title from '@Components/Title';
 
@@ -19,13 +18,9 @@ import Pokemon from './components/Pokemon';
 import { RouterType } from '@Containers/Router/types';
 
 interface PokemonPageProps {
-    pokemon: {
-        data: PokemonType,
-    },
+    pokemon: PokemonRequestType,
     router: RouterType,
-    species: {
-        data: SpeciesListType|null,
-    },
+    species: SpeciesListRequestType,
 
     getPokemon: (id: string) => void;
     resetPokemon: () => void;

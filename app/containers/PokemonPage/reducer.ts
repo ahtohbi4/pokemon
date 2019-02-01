@@ -10,8 +10,17 @@ import {
 
     RESET_POKEMON_DATA,
 } from './constants';
+import {
+    PokemonRequestType,
+    SpeciesListRequestType,
+} from './types';
 
-const initialState = {
+export interface StoreType {
+    pokemon: PokemonRequestType,
+    species: SpeciesListRequestType,
+}
+
+const initialState: StoreType = {
     pokemon: {
         data: null,
         error: null,
@@ -24,7 +33,7 @@ const initialState = {
     },
 };
 
-export default (state = initialState, action: ActionType) => {
+export default (state: StoreType = initialState, action: ActionType): StoreType => {
     switch (action.type) {
         case GET_POKEMON_REQUEST:
             return {

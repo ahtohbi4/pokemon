@@ -10,7 +10,7 @@ export interface StoreType {
     pokemons: PokemonsListRequestType,
 }
 
-const initialState = {
+const initialState: StoreType = {
     pokemons: {
         data: null,
         error: null,
