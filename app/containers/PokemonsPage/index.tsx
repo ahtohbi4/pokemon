@@ -1,20 +1,17 @@
 import React, { Fragment, PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actions from './actions';
 import selectPokemonsPage from './selectors';
+import { PokemonsListRequestType } from './types';
 
 import Title from '@Components/Title';
 
 import PokemonsList from './components/PokemonsList';
 
 interface PokemonsPageProps {
-    pokemons: {
-        data: [],
-        error: any,
-        isLoading: boolean,
-    },
+    pokemons: PokemonsListRequestType,
 
     getPokemonsList: () => void,
 }
@@ -22,7 +19,7 @@ interface PokemonsPageProps {
 class PokemonsPage extends PureComponent<PokemonsPageProps> {
     static mapStateToProps = selectPokemonsPage;
 
-    static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
+    static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
     componentDidMount() {
         const { pokemons: { data }, getPokemonsList } = this.props;

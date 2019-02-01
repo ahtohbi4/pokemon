@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { media } from '@Utils/styles';
 
 export const Container = styled.div`
-    ${({ level, theme }) => {
-        switch (level) {
-            case 1:
+    ${({ as, theme }) => {
+        switch (as) {
+            case 'h1':
                 return `
                     margin: 2rem 0 1.5rem;
 
@@ -18,7 +18,7 @@ export const Container = styled.div`
                     `};
                 `;
 
-            case 2:
+            case 'h2':
                 return `
                     margin: 0 0 1rem;
 

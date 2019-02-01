@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
+
+import { PokemonsListRequestType } from '../../types';
 
 import Loader from '@Components/Loader';
 
@@ -8,7 +10,11 @@ import {
     List,
 } from './UIComponents';
 
-const PokemonsList = ({ pokemons: { data, error, isLoading } }) => {
+interface PokemonsListPropsType {
+    pokemons: PokemonsListRequestType,
+}
+
+const PokemonsList: FC<PokemonsListPropsType> = ({ pokemons: { data, error, isLoading } }) => {
     if (isLoading) {
         return (
             <Container>

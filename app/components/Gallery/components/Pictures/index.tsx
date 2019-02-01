@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 
 import {
-    PicturesListType,
-    PictureType,
+    PicturesList,
+    Picture as PictureType,
 } from '../../types';
 import {
     Info,
@@ -11,11 +11,11 @@ import {
     Picture,
 } from './UIComponents';
 
-interface PicturesPropsType {
-    pictures: PicturesListType,
+interface PicturesProps {
+    pictures: PicturesList,
 }
 
-const Pictures = ({ pictures }: PicturesPropsType) => {
+const Pictures = ({ pictures }: PicturesProps) => {
     if (pictures.length === 0) {
         return (
             <Info>

@@ -4,6 +4,7 @@
     "baseUrl": "./",
     "paths": {
       "@Constants": ["app/constants"],
+      "@Types": ["app/types"],
 
       "@Components/*": ["app/components/*"],
       "@Containers/*": ["app/containers/*"],

@@ -1,18 +1,13 @@
-import { PokemonsList } from '../../types';
-
 import { ActionType } from './actions';
 import {
     GET_POKEMONS_LIST_FAILURE,
     GET_POKEMONS_LIST_REQUEST,
     GET_POKEMONS_LIST_SUCCESS,
 } from './constants';
+import { PokemonsListRequestType } from './types';
 
-export interface Store {
-    pokemons: {
-        data: PokemonsList|null,
-        error: string|null,
-        isLoading: boolean
-    },
+export interface StoreType {
+    pokemons: PokemonsListRequestType,
 }
 
 const initialState = {
@@ -23,7 +18,7 @@ const initialState = {
     },
 };
 
-export default (state: Store = initialState, action: ActionType): Store => {
+export default (state: StoreType = initialState, action: ActionType): StoreType => {
     switch (action.type) {
         case GET_POKEMONS_LIST_REQUEST:
             return {

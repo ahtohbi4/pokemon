@@ -1,6 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import {
+    PokemonType,
+    SpeciesListType,
+} from '../../types';
 
 import { convertToTitle } from '@Utils/formatString';
 
@@ -11,9 +16,17 @@ import Title from '@Components/Title';
 
 import Pokemon from './components/Pokemon';
 
-import { Router } from '@Containers/Router/types';
+import { RouterType } from '@Containers/Router/types';
 
 interface PokemonPageProps {
+    pokemon: {
+        data: PokemonType,
+    },
+    router: RouterType,
+    species: {
+        data: SpeciesListType|null,
+    },
+
     getPokemon: (id: string) => void;
     resetPokemon: () => void;
 }
@@ -21,7 +34,7 @@ interface PokemonPageProps {
 class PokemonPage extends PureComponent<PokemonPageProps> {
     static mapStateToProps = selectPokemonPage;
 
-    static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
+    static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
     get id(): string {
         const { router: { location: { query: { id } } } } = this.props;

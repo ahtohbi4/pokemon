@@ -1,3 +1,4 @@
+import { ActionType } from './actions';
 import {
     GET_POKEMON_FAILURE,
     GET_POKEMON_REQUEST,
@@ -23,7 +24,7 @@ const initialState = {
     },
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: ActionType) => {
     switch (action.type) {
         case GET_POKEMON_REQUEST:
             return {

@@ -4,16 +4,16 @@ import Title from '@Components/Title';
 
 import Pictures from './components/Pictures';
 
-import { PicturesListType } from './types';
+import { PicturesList } from './types';
 import { Container } from './UIComponents';
 
-interface GalleryPropsType {
-    pictures: PicturesListType,
+interface GalleryProps {
+    pictures: PicturesList,
 }
 
-const Gallery = ({ pictures }: GalleryPropsType) => (
+const Gallery = ({ pictures }: GalleryProps) => (
     <Container>
-        <Title level={2}>
+        <Title tagName="h2">
             Gallery
         </Title>
 

@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import { StoreType } from '@Types';
+
 import pokemonPageReducer from '@Containers/PokemonPage/reducer';
 import { CONTAINER_ALIAS as POKEMON_PAGE_CONTAINER_ALIAS } from '@Containers/PokemonPage/constants';
 
@@ -9,7 +11,7 @@ import { CONTAINER_ALIAS as POKEMONS_PAGE_CONTAINER_ALIAS } from '@Containers/Po
 import routerReducer from '@Containers/Router/reducer';
 import { CONTAINER_ALIAS as ROUTER_CONTAINER_ALIAS } from '@Containers/Router/constants';
 
-export default function createReducer(injectedReducers: object = {}) {
+export default function createReducer(injectedReducers: StoreType = {}) {
     return combineReducers({
         [ROUTER_CONTAINER_ALIAS]: routerReducer,
 

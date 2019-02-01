@@ -1,4 +1,4 @@
-import { PokemonsList } from '../../types';
+import { PokemonsListType } from '@Types';
 
 import {
     GET_POKEMONS_LIST_REQUEST,
@@ -12,7 +12,7 @@ interface GetPokemonsListAction {
 
 interface GetPokemonsListSuccessAction {
     type: string,
-    payload: PokemonsList,
+    payload: PokemonsListType,
 }
 
 interface GetPokemonsListFailureAction {
@@ -29,7 +29,7 @@ export const getPokemonsList = (): GetPokemonsListAction => ({
     type: GET_POKEMONS_LIST_REQUEST,
 });
 
-export const getPokemonsListSuccess = (data: PokemonsList): GetPokemonsListSuccessAction => ({
+export const getPokemonsListSuccess = (data: PokemonsListType): GetPokemonsListSuccessAction => ({
     type: GET_POKEMONS_LIST_SUCCESS,
     payload: data,
 });

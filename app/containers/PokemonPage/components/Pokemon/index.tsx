@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import React, { FC, Fragment, memo } from 'react';
 
 import Gallery from '@Components/Gallery';
 import Loader from '@Components/Loader';
@@ -6,7 +6,12 @@ import Title from '@Components/Title';
 
 import Species from '../Species';
 
-const Pokemon = ({ pokemon, species }) => {
+interface PokemonPropsType {
+    pokemon: {},
+    species: {},
+}
+
+const Pokemon: FC<PokemonPropsType> = ({ pokemon, species }) => {
     const { data, error, isLoading } = pokemon;
 
     if (isLoading) {
@@ -31,7 +36,7 @@ const Pokemon = ({ pokemon, species }) => {
 
     return (
         <Fragment>
-            <Title level={2}>
+            <Title tagName="h2">
                 Characteristic
             </Title>
 
@@ -43,7 +48,7 @@ const Pokemon = ({ pokemon, species }) => {
                 Weight: {weight}
             </div>
 
-            <Title level={2}>
+            <Title tagName="h2">
                 Abilities
             </Title>
 

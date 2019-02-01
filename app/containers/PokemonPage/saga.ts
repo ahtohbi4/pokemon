@@ -14,7 +14,7 @@ import {
     GET_SPECIES_REQUEST,
 } from './constants';
 
-function* getPokemonSaga(action) {
+function* getPokemonSaga(action: actions.ActionType) {
     try {
         const { payload: id } = action;
         const { data: pokemon } = yield call(api.get, interpolate(API_GET_POKEMON, { id }));
@@ -29,7 +29,7 @@ function* getPokemonSaga(action) {
     }
 }
 
-function* getSpeciesSaga(action) {
+function* getSpeciesSaga(action: actions.ActionType) {
     try {
         const { payload: id } = action;
         const { data: species } = yield call(api.get, interpolate(API_GET_SPECIES, { id }));

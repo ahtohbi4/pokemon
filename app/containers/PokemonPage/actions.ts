@@ -1,4 +1,7 @@
-import { Pokemon } from '../../types';
+import {
+    PokemonType,
+    SpeciesListType,
+} from '../../types';
 
 import {
     GET_POKEMON_FAILURE,
@@ -12,46 +15,79 @@ import {
     RESET_POKEMON_DATA,
 } from './constants';
 
-interface GetPokemonAction {
+interface GetPokemonType {
     type: string,
     payload: string,
 }
 
-interface GetPokemonSuccessAction {
-    type: string,
-    payload: PokemonType,
-}
-
-export const getPokemon = (slug: string): GetPokemonAction => ({
+export const getPokemon = (slug: string): GetPokemonType => ({
     type: GET_POKEMON_REQUEST,
     payload: slug,
 });
 
-export const getPokemonSuccess = (data: PokemonType): GetPokemonSuccessAction => ({
+interface GetPokemonSuccessType {
+    type: string,
+    payload: PokemonType,
+}
+
+export const getPokemonSuccess = (data: PokemonType): GetPokemonSuccessType => ({
     type: GET_POKEMON_SUCCESS,
     payload: data,
 });
 
-export const getPokemonFailure = (error: any) => ({
+interface GetPokemonFailureType {
+    type: string,
+    payload: any,
+}
+
+export const getPokemonFailure = (error: any): GetPokemonFailureType => ({
     type: GET_POKEMON_FAILURE,
     payload: error,
 });
 
-export const getSpecies = (slug: string) => ({
+interface GetSpeciesType {
+    type: string,
+    payload: string,
+}
+
+export const getSpecies = (slug: string): GetSpeciesType => ({
     type: GET_SPECIES_REQUEST,
     payload: slug,
 });
 
-export const getSpeciesSuccess = (data) => ({
+interface GetSpeciesSuccessType {
+    type: string,
+    payload: SpeciesListType,
+}
+
+export const getSpeciesSuccess = (data: SpeciesListType): GetSpeciesSuccessType => ({
     type: GET_SPECIES_SUCCESS,
     payload: data,
 });
 
-export const getSpeciesFailure = (error: any) => ({
+interface GetSpeciesFailureType {
+    type: string,
+    payload: any,
+}
+
+export const getSpeciesFailure = (error: any): GetSpeciesFailureType => ({
     type: GET_SPECIES_FAILURE,
     payload: error,
 });
 
-export const resetPokemon = () => ({
+interface ResetPokemonType {
+    type: string,
+}
+
+export const resetPokemon = (): ResetPokemonType => ({
     type: RESET_POKEMON_DATA,
 });
+
+export type ActionType =
+    GetPokemonType &
+    GetPokemonSuccessType &
+    GetPokemonFailureType &
+    GetSpeciesType &
+    GetSpeciesSuccessType &
+    GetSpeciesFailureType &
+    ResetPokemonType;

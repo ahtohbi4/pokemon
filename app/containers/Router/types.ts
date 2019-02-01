@@ -1,8 +1,8 @@
-export interface Route {
+export interface RouteType {
     pathname: string|undefined,
     query: object,
 }
 
-export interface Router {
-    location: Route,
+export interface RouterType {
+    location: RouteType,
 }

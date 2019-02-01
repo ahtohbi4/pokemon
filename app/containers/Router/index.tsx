@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actions from './actions';
@@ -30,7 +30,7 @@ export {
 class Router extends PureComponent<RouterPropsType> {
     static mapStateToProps = selectRouter;
 
-    static mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
+    static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
     static parse(hash: string) {
         const [

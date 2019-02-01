@@ -37,6 +37,8 @@ export const theme = {
     },
 };
 
+export type ThemeType = typeof theme;
+
 export const GlobalStyle = createGlobalStyle`
     ${normalize()};
 

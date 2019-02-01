@@ -2,22 +2,19 @@ import React, { ReactNode, memo } from 'react';
 
 import { Container } from './UIComponents';
 
-interface TitleProps {
+export interface TitlePropsType {
     children: ReactNode,
-    level: number,
+    tagName: string,
 }
 
-const Title = ({ children, level }: TitleProps) => (
-    <Container
-        as={`h${level}`}
-        level={level}
-    >
+const Title = ({ children, tagName }: TitlePropsType) => (
+    <Container as={tagName}>
         {children}
     </Container>
 );
 
 Title.defaultProps = {
-    level: 1,
+    tagName: 'h1',
 };
 
 export default memo(Title);
