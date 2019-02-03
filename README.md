@@ -10,5 +10,6 @@ With:
  * typescript.
  * react.
  * redux.
+ * immutablejs (shoul to).
  * redux-saga.
  * styled-components.
