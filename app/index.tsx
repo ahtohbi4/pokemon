@@ -9,6 +9,7 @@ import configureStore from './configureStore';
 import Router, { Redirect, Route, Switch } from '@Containers/Router';
 
 import App from '@Containers/App';
+import Theme from '@Containers/Theme';
 
 import PokemonPage from '@Containers/PokemonPage';
 import PokemonsPage from '@Containers/PokemonsPage';
@@ -20,16 +21,18 @@ ReactDOM.render(
     (
         <Provider store={store}>
             <Router>
-                <App>
-                    <Switch>
-                        <Redirect from="/" to="/pokemons/" />
+                <Theme>
+                    <App>
+                        <Switch>
+                            <Redirect from="/" to="/pokemons/" />
 
-                        <Route path="/pokemon/" component={PokemonPage} />
-                        <Route path="/pokemons/" component={PokemonsPage} />
+                            <Route path="/pokemon/" component={PokemonPage} />
+                            <Route path="/pokemons/" component={PokemonsPage} />
 
-                        <Route path="*" component={NotFoundPage} />
-                    </Switch>
-                </App>
+                            <Route path="*" component={NotFoundPage} />
+                        </Switch>
+                    </App>
+                </Theme>
             </Router>
         </Provider>
     ),

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@Utils/styled';
 import { readableColor } from 'polished';
 
 interface NamePropsType {

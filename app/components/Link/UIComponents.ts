@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@Utils/styled';
 
 import { Link } from '@Containers/Router';
 

@@ -1,9 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import ErrorBoundary from '@Components/ErrorBoundary';
-
-import { GlobalStyle, theme } from './UIComponents';
 
 interface PropsType {}
 
@@ -12,17 +9,13 @@ export default class App extends PureComponent<PropsType> {
         const { children } = this.props;
 
         return (
-            <ThemeProvider theme={theme}>
-                <Fragment>
-                    <GlobalStyle />
-
+            <Fragment>
+                <main>
                     <ErrorBoundary>
-                        <main>
-                            {children}
-                        </main>
+                        {children}
                     </ErrorBoundary>
-                </Fragment>
-            </ThemeProvider>
+                </main>
+            </Fragment>
         );
     }
 }

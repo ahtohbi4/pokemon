@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@Utils/styled';
 
 export const Container = styled.div`
     text-align: center;
