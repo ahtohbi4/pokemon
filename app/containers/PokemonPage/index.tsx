@@ -1,6 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { InjectRouterPropsType } from '@Containers/Router';
 import { convertToTitle } from '@Utils/formatString';
@@ -36,6 +37,10 @@ class PokemonPage extends PureComponent<PropsType> {
         return id;
     }
 
+    private get name(): string {
+        return convertToTitle(this.id);
+    }
+
     componentDidMount() {
         const { getPokemon } = this.props;
 
@@ -53,8 +58,14 @@ class PokemonPage extends PureComponent<PropsType> {
 
         return (
             <Fragment>
+                <Helmet>
+                    <title>
+                        {`Pokemon ${this.name} page.`}
+                    </title>
+                </Helmet>
+
                 <Title>
-                    {convertToTitle(this.id)}
+                    {this.name}
                 </Title>
 
                 <Pokemon
@@ -63,7 +74,7 @@ class PokemonPage extends PureComponent<PropsType> {
                 />
 
                 <p>
-                    <Link to="asdasd">All pokemons</Link>
+                    <Link to="/pokemons/">All pokemons</Link>
                 </p>
             </Fragment>
         );

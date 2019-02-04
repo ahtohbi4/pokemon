@@ -1,6 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { InjectRouterPropsType } from '@Containers/Router';
 
@@ -36,6 +37,12 @@ class PokemonsPage extends PureComponent<PropsType> {
 
         return (
             <Fragment>
+                <Helmet>
+                    <title>
+                        Pokemons list.
+                    </title>
+                </Helmet>
+
                 <Title>
                     Pokemons
                 </Title>
