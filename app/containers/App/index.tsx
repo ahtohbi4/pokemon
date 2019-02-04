@@ -5,7 +5,9 @@ import ErrorBoundary from '@Components/ErrorBoundary';
 
 import { GlobalStyle, theme } from './UIComponents';
 
-export default class App extends PureComponent {
+interface PropsType {}
+
+export default class App extends PureComponent<PropsType> {
     render() {
         const { children } = this.props;
 

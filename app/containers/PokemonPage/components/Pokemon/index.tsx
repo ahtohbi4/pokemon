@@ -11,12 +11,12 @@ import Title from '@Components/Title';
 
 import Species from '../Species';
 
-interface PokemonPropsType {
+interface PropsType {
     pokemon: PokemonRequestType,
     species: SpeciesRequestType,
 }
 
-const Pokemon: FC<PokemonPropsType> = ({ pokemon, species }) => {
+const Pokemon: FC<PropsType> = ({ pokemon, species }) => {
     const { data, error, isLoading } = pokemon;
 
     if (isLoading) {

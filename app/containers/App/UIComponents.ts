@@ -45,7 +45,6 @@ export const GlobalStyle = createGlobalStyle`
     html {
         margin: 0;
         padding: 0;
-
         color: ${({ theme }) => theme.colors.text.normal};
         font-family: ${({ theme }) => theme.font.primary};
         font-size: ${({ theme }) => theme.font.size};
@@ -59,13 +58,5 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
         padding: 0 1rem;
         box-sizing: border-box;
-    }
-
-    a {
-        color: ${({ theme }) => theme.colors.link.normal};
-    }
-
-    a:hover {
-        color: ${({ theme }) => theme.colors.link.hovered};
     }
 `;

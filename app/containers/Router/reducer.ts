@@ -4,7 +4,7 @@ import { ActionType } from './actions';
 import { RouterType } from './types';
 
 export interface StoreType {
-    router: RouterType,
+    readonly router: RouterType,
 }
 
 const initialState: StoreType = {

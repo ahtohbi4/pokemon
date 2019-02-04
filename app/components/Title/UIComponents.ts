@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 import { media } from '@Utils/styles';
 
-export const Container = styled.div`
-    ${({ as, theme }) => {
-        switch (as) {
+import { PropsType } from './';
+
+export const Container = styled.div.attrs({
+    as: ({ tagName }: PropsType) => tagName,
+})`
+    ${({ tagName, theme }: PropsType) => {
+        switch (tagName) {
             case 'h1':
                 return `
                     margin: 2rem 0 1.5rem;
-
                     font-family: ${theme.font.secondary};
                     font-size: 1.75rem;
                     font-weight: 400;
@@ -21,7 +24,6 @@ export const Container = styled.div`
             case 'h2':
                 return `
                     margin: 0 0 1rem;
-
                     font-family: ${theme.font.primary};
                     font-size: 1.125rem;
                     font-weight: 400;

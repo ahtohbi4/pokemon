@@ -1,12 +1,12 @@
 import { PureComponent } from 'react';
 
-interface RedirectPropsType {
+export interface PropsType {
     from: string,
     to: string,
 }
 
-export default class Redirect extends PureComponent<RedirectPropsType> {
-    constructor(props: RedirectPropsType) {
+export default class Redirect extends PureComponent<PropsType> {
+    constructor(props: PropsType) {
         super(props);
 
         const { to } = this.props;

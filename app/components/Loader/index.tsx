@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 
 import {
     Container,
@@ -6,7 +6,9 @@ import {
     Icon,
 } from './UIComponents';
 
-const Loader = () => (
+interface PropsType {}
+
+const Loader: FC<PropsType> = () => (
     <Container>
         <Icon>
             <Dot />

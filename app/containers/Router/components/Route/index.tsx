@@ -1,14 +1,14 @@
-import React, { Component, ReactChildren } from 'react';
+import React, { Component, ComponentType } from 'react';
 
 import RouterContext from '../RouterContext';
 
-interface RoutePropsType {
-    component: ReactChildren,
+export interface PropsType {
+    component: ComponentType,
     path: string,
 }
 
 // It should be extended from Component to correct working of context.
-export default class Route extends Component<RoutePropsType> {
+export default class Route extends Component<PropsType> {
     static contextType = RouterContext;
 
     render() {

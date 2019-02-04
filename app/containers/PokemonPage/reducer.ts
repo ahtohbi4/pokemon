@@ -16,8 +16,8 @@ import {
 } from './types';
 
 export interface StoreType {
-    pokemon: PokemonRequestType,
-    species: SpeciesRequestType,
+    readonly pokemon: PokemonRequestType,
+    readonly species: SpeciesRequestType,
 }
 
 const initialState: StoreType = {

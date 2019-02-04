@@ -1,19 +1,19 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 
 import Title from '@Components/Title';
 
 import Pictures from './components/Pictures';
 
-import { PicturesList } from './types';
+import { PicturesListType } from './types';
 import { Container } from './UIComponents';
 
-interface GalleryProps {
-    pictures: PicturesList,
+interface PropsType {
+    pictures: PicturesListType,
 }
 
 export * from './types';
 
-const Gallery = ({ pictures }: GalleryProps) => (
+const Gallery: FC<PropsType> = ({ pictures }) => (
     <Container>
         <Title tagName="h2">
             Gallery

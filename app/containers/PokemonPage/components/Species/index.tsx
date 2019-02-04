@@ -7,11 +7,11 @@ import Title from '@Components/Title';
 
 import { Name } from './UIComponents';
 
-interface SpeciesPropsType {
+interface PropsType {
     species: SpeciesRequestType,
 }
 
-const Species: FC<SpeciesPropsType> = ({ species }) => {
+const Species: FC<PropsType> = ({ species }) => {
     const { data, error, isLoading } = species;
 
     if (isLoading) {

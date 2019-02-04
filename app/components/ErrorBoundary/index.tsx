@@ -1,26 +1,34 @@
 import React, { Children, PureComponent } from 'react';
 
-export default class ErrorBoundary extends PureComponent {
-  state = {
-    hasError: false,
-  };
+import Title from '@Components/Title';
 
-  componentDidCatch() {
-    this.setState({ hasError: true });
-  }
+interface PropsType {}
 
-  render() {
-    const { children } = this.props;
-    const { hasError } = this.state;
+interface StateType {
+    hasError: boolean,
+}
 
-    if (hasError) {
-      return (
-        <h1>
-          Something went wrong.
-        </h1>
-      );
+export default class ErrorBoundary extends PureComponent<PropsType, StateType> {
+    readonly state = {
+        hasError: false,
+    };
+
+    componentDidCatch() {
+        this.setState({ hasError: true });
     }
 
-    return Children.only(children);
-  }
+    render() {
+        const { children } = this.props;
+        const { hasError } = this.state;
+
+        if (hasError) {
+            return (
+                <Title>
+                    Something went wrong.
+                </Title>
+            );
+        }
+
+        return Children.only(children);
+    }
 }

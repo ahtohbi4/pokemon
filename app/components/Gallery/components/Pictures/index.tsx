@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 
 import {
-    PicturesList,
-    Picture as PictureType,
+    PicturesListType,
+    PictureType,
 } from '../../types';
 import {
     Info,
@@ -11,11 +11,11 @@ import {
     Picture,
 } from './UIComponents';
 
-interface PicturesProps {
-    pictures: PicturesList,
+interface PropsType {
+    pictures: PicturesListType,
 }
 
-const Pictures = ({ pictures }: PicturesProps) => {
+const Pictures: FC<PropsType> = ({ pictures }) => {
     if (pictures.length === 0) {
         return (
             <Info>

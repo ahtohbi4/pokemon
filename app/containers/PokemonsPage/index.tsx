@@ -10,13 +10,13 @@ import Title from '@Components/Title';
 
 import PokemonsList from './components/PokemonsList';
 
-interface PokemonsPageProps {
+interface PropsType {
     pokemons: PokemonsListRequestType,
 
     getPokemonsList: () => void,
 }
 
-class PokemonsPage extends PureComponent<PokemonsPageProps> {
+class PokemonsPage extends PureComponent<PropsType> {
     static mapStateToProps = selectPokemonsPage;
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);

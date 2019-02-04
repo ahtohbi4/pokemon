@@ -3,12 +3,14 @@ import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actions from './actions';
+import { URL_PREFIX } from './constants';
 import selectRouter from './selectors';
 import {
     RouteType,
     RouterType,
 } from './types';
 
+import Link from './components/Link';
 import Redirect from './components/Redirect';
 import Route from './components/Route';
 import RouterContext from './components/RouterContext';
@@ -21,7 +23,10 @@ interface RouterPropsType {
     changeLocation: (route: RouteType) => void,
 }
 
+const HASH_CHANGE_EVENT_NAME = 'hashchange';
+
 export {
+    Link,
     Redirect,
     Route,
     Switch,
@@ -32,12 +37,12 @@ class Router extends PureComponent<RouterPropsType> {
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
-    static parse(hash: string) {
+    private static parseHash(hash: string) {
         const [
             pathname = '/',
             query = '',
         ] = hash
-            .replace(/^#!/, '')
+            .replace(new RegExp(`^${URL_PREFIX}`), '')
             .split('?')
             .filter((item) => (item !== ''));
 
@@ -53,7 +58,7 @@ class Router extends PureComponent<RouterPropsType> {
                         [key]: (value === undefined) ? true : value,
                     };
                 }, {}),
-            pathname: pathname.replace(/([^/])$/g, (matches, lastSymbol) => `${lastSymbol}/`),
+            pathname: pathname.replace(/([^/])$/g, (_matches, lastSymbol) => `${lastSymbol}/`),
         };
     }
 
@@ -62,24 +67,24 @@ class Router extends PureComponent<RouterPropsType> {
 
         const { changeLocation } = this.props;
 
-        changeLocation(Router.parse(initialHash));
+        changeLocation(Router.parseHash(initialHash));
 
         this.handleHashChange = this.handleHashChange.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener('hashchange', this.handleHashChange);
+        window.addEventListener(HASH_CHANGE_EVENT_NAME, this.handleHashChange);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('hashchange', this.handleHashChange);
+        window.removeEventListener(HASH_CHANGE_EVENT_NAME, this.handleHashChange);
     }
 
     private handleHashChange(event: HashChangeEvent) {
         const { target: { location: { hash } } } = event;
         const { changeLocation } = this.props;
 
-        changeLocation(Router.parse(hash));
+        changeLocation(Router.parseHash(hash));
     }
 
     render() {

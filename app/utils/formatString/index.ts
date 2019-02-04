@@ -5,4 +5,4 @@ interface ParamsType {
 }
 
 export const interpolate = (template: string, params: ParamsType): string => template
-    .replace(/\{[\s]*([\w]+)[\s]*\}/g, (matches: string, name: string) => params[name]);
+    .replace(/\{[\s]*([\w]+)[\s]*\}/g, (_matches, name: string) => params[name]);

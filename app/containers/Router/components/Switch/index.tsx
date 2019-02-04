@@ -1,14 +1,15 @@
-import { Children, Component } from 'react';
+import { Children, Component, ReactElement } from 'react';
 
-import Redirect from '../Redirect';
-import Route from '../Route';
+import Redirect, { PropsType as RedirectPropsType } from '../Redirect';
+import Route, { PropsType as RoutePropsType } from '../Route';
 import RouterContext from '../RouterContext';
 
-interface SwitchPropsType {
-}
+interface PropsType {}
+
+interface ChildPropsType extends RedirectPropsType, RoutePropsType {}
 
 // It should be extended from Component to correct working of context.
-export default class Switch extends Component<SwitchPropsType> {
+export default class Switch extends Component<PropsType> {
     static contextType = RouterContext;
 
     render() {
@@ -16,9 +17,13 @@ export default class Switch extends Component<SwitchPropsType> {
         const { children } = this.props;
 
         return Children.toArray(children)
-            .find(({ props: { from, path }, type }) => (
-                (type === Redirect && from === pathname) ||
-                (type === Route && (path === pathname || path === '*'))
-            ));
+            .find((params) => {
+                const {props: {from, path}, type} = params as ReactElement<ChildPropsType>;
+
+                return (
+                    (type === Redirect && from === pathname) ||
+                    (type === Route && (path === pathname || path === '*'))
+                );
+            });
     }
 }

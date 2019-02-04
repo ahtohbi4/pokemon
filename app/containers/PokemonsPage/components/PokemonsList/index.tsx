@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { PokemonsListRequestType } from '../../types';
 
@@ -10,11 +10,11 @@ import {
     List,
 } from './UIComponents';
 
-interface PokemonsListPropsType {
+interface PropsType {
     pokemons: PokemonsListRequestType,
 }
 
-const PokemonsList: FC<PokemonsListPropsType> = ({ pokemons: { data, error, isLoading } }) => {
+const PokemonsList: FC<PropsType> = ({ pokemons: { data, error, isLoading } }) => {
     if (isLoading) {
         return (
             <Container>
@@ -48,4 +48,4 @@ const PokemonsList: FC<PokemonsListPropsType> = ({ pokemons: { data, error, isLo
     );
 };
 
-export default PokemonsList;
+export default memo(PokemonsList);

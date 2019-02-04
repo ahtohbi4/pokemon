@@ -12,12 +12,13 @@ import {
 } from './types';
 
 import Title from '@Components/Title';
+import Link from '@Components/Link';
 
 import Pokemon from './components/Pokemon';
 
 import { RouterType } from '@Containers/Router/types';
 
-interface PokemonPageProps {
+interface PropsType {
     pokemon: PokemonRequestType,
     router: RouterType,
     species: SpeciesRequestType,
@@ -26,12 +27,12 @@ interface PokemonPageProps {
     resetPokemon: () => void;
 }
 
-class PokemonPage extends PureComponent<PokemonPageProps> {
+class PokemonPage extends PureComponent<PropsType> {
     static mapStateToProps = selectPokemonPage;
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
-    get id(): string {
+    private get id(): string {
         const { router: { location: { query: { id } } } } = this.props;
 
         return id;
@@ -64,7 +65,7 @@ class PokemonPage extends PureComponent<PokemonPageProps> {
                 />
 
                 <p>
-                    <a href="#!/">All pokemons</a>
+                    <Link to="asdasd">All pokemons</Link>
                 </p>
             </Fragment>
         );
