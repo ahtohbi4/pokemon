@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 export const Container = styled.div`
     display: flex;
     min-height: 5rem;
+
     align-items: center;
     justify-content: center;
 `;
@@ -12,7 +13,9 @@ export const Icon = styled.div.attrs({
 })`
     display: inline-flex;
     width: 60px;
+
     vertical-align: top;
+
     flex-wrap: nowrap;
     justify-content: space-between;
 `;
@@ -34,12 +37,14 @@ export const Dot = styled.div`
     display: inline-block;
     width: 30%;
     position: relative;
+
     flex-grow: 0;
     flex-shrink: 0;
 
     &::before {
         display: block;
         padding-top: 100%;
+
         content: '';
     }
 
@@ -49,13 +54,16 @@ export const Dot = styled.div`
         position: absolute;
         top: 0;
         left: 0;
+
         background-color: ${({ theme }) => theme.colors.text.light};
         border-radius: 100%;
+
         animation-duration: ${BLINK_DURATION}s;
         animation-iteration-count: infinite;
         animation-fill-mode: both;
         animation-name: ${blink};
         animation-timing-function: ease-out;
+
         content: '';
     }
 

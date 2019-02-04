@@ -39,12 +39,15 @@ export const theme = {
 
 export type ThemeType = typeof theme;
 
+export const styled = baseStyled as ThemedStyledInterface<ThemeType>;
+
 export const GlobalStyle = createGlobalStyle`
     ${normalize()};
 
     html {
         margin: 0;
         padding: 0;
+
         color: ${({ theme }) => theme.colors.text.normal};
         font-family: ${({ theme }) => theme.font.primary};
         font-size: ${({ theme }) => theme.font.size};
