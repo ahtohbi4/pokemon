@@ -2,6 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 
 import ErrorBoundary from '@Components/ErrorBoundary';
 import Header from '@Components/Header';
+import Footer from '@Components/Footer';
 
 import { GlobalStyle } from './UIComponents';
 
@@ -22,6 +23,8 @@ export default class App extends PureComponent<PropsType> {
                         {children}
                     </ErrorBoundary>
                 </main>
+
+                <Footer />
             </Fragment>
         );
     }
