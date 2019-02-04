@@ -5,8 +5,6 @@ import {
     ThemeProvider,
 } from '@Utils/styled';
 
-import { GlobalStyle } from './UIComponents';
-
 interface PropsType {}
 
 export default class Theme extends PureComponent<PropsType> {
@@ -16,8 +14,6 @@ export default class Theme extends PureComponent<PropsType> {
         return (
             <ThemeProvider theme={DEFAULT_THEME}>
                 <Fragment>
-                    <GlobalStyle />
-
                     {children}
                 </Fragment>
             </ThemeProvider>

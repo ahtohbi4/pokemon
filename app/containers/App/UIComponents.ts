@@ -18,9 +18,8 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         min-width: 320px;
-        max-width: 900px;
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0;
         box-sizing: border-box;
     }
 `;

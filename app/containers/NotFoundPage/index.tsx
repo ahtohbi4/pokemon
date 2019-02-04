@@ -6,7 +6,7 @@ import Title from '@Components/Title';
 interface PropsType extends InjectRouterPropsType {}
 
 export default class NotFoundPage extends PureComponent<PropsType> {
-    render() {qq
+    render() {
         return (
             <Fragment>
                 <Title>

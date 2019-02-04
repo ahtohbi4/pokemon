@@ -1,6 +1,9 @@
 import React, { Fragment, PureComponent } from 'react';
 
 import ErrorBoundary from '@Components/ErrorBoundary';
+import Header from '@Components/Header';
+
+import { GlobalStyle } from './UIComponents';
 
 interface PropsType {}
 
@@ -10,6 +13,10 @@ export default class App extends PureComponent<PropsType> {
 
         return (
             <Fragment>
+                <GlobalStyle />
+
+                <Header />
+
                 <main>
                     <ErrorBoundary>
                         {children}
