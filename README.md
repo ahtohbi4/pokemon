@@ -10,6 +10,6 @@ With:
  * typescript.
  * react.
  * redux.
- * immutablejs (shoul to).
+ * immutablejs (should to).
  * redux-saga.
  * styled-components.
