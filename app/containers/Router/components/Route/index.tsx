@@ -1,9 +1,10 @@
 import React, { Component, ComponentType } from 'react';
 
+import { InjectRouterPropsType } from '../../types';
 import RouterContext from '../RouterContext';
 
 export interface PropsType {
-    component: ComponentType,
+    component: ComponentType<InjectRouterPropsType>,
     path: string,
 }
 

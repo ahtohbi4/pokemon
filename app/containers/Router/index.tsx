@@ -18,7 +18,7 @@ import Switch from './components/Switch';
 
 const { location: { hash: initialHash } } = window;
 
-interface RouterPropsType {
+interface PropsType {
     router: RouterType,
     changeLocation: (route: RouteType) => void,
 }
@@ -31,8 +31,9 @@ export {
     Route,
     Switch,
 };
+export * from './types';
 
-class Router extends PureComponent<RouterPropsType> {
+class Router extends PureComponent<PropsType> {
     static mapStateToProps = selectRouter;
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
@@ -62,7 +63,7 @@ class Router extends PureComponent<RouterPropsType> {
         };
     }
 
-    constructor(props: RouterPropsType) {
+    constructor(props: PropsType) {
         super(props);
 
         const { changeLocation } = this.props;

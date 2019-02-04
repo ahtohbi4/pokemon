@@ -2,6 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { InjectRouterPropsType } from '@Containers/Router';
 import { convertToTitle } from '@Utils/formatString';
 
 import * as actions from './actions';
@@ -16,11 +17,8 @@ import Link from '@Components/Link';
 
 import Pokemon from './components/Pokemon';
 
-import { RouterType } from '@Containers/Router/types';
-
-interface PropsType {
+interface PropsType extends InjectRouterPropsType {
     pokemon: PokemonRequestType,
-    router: RouterType,
     species: SpeciesRequestType,
 
     getPokemon: (id: string) => void;

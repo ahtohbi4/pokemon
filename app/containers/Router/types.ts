@@ -8,3 +8,7 @@ export interface RouteType {
 export interface RouterType {
     location: RouteType,
 }
+
+export interface InjectRouterPropsType {
+    router: RouterType,
+}
