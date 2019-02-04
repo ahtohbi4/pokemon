@@ -2,3 +2,14 @@
 ===
 
 > SPA — Pet project.
+
+With:
+ * git.
+ * yarn.
+ * webpack.
+ * typescript.
+ * react.
+ * redux.
+ * immutablejs (shoul to).
+ * redux-saga.
+ * styled-components.
