@@ -2,6 +2,18 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "newLine": "lf",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "paths": {
       "@Constants": ["app/constants"],
       "@Types": ["app/types"],
@@ -10,27 +22,14 @@
       "@Containers/*": ["app/containers/*"],
       "@Utils/*": ["app/utils/*"]
     },
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "target": "es2015",
-    "module": "es2015",
     "strict": true,
-    "jsx": "react",
-    "lib": [
-      "es2017",
-      "dom"
-    ]
+    "target": "es2017"
   },
-  "include": [
-    "app/*"
-  ],
   "exclude": [
     "build",
     "node_modules"
+  ],
+  "include": [
+    "app/*"
   ]
 }
