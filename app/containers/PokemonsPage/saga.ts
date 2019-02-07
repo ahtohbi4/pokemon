@@ -6,7 +6,7 @@ import * as actions from './actions';
 import { ActionTypes } from './constants';
 
 function* getPokemonsSaga(action: actions.ActionType) {
-    const { payload: { url } } = action;
+    const { payload: url } = action;
 
     try {
         const { data } = yield call(api.get, url);

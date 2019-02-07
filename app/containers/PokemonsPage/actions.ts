@@ -5,15 +5,15 @@ import { ActionTypes } from './constants';
 import { PokemonsListResponseType } from './types';
 
 export const getPokemonsRequest = (
-    payload: { url: string } = { url: API_GET_POKEMONS_LIST }
-) => createAction(ActionTypes.GET_POKEMONS_REQUEST, payload);
+    url: string = API_GET_POKEMONS_LIST,
+) => createAction(ActionTypes.GET_POKEMONS_REQUEST, url);
 
 export const getPokemonsSuccess = (
-    payload: PokemonsListResponseType
+    payload: PokemonsListResponseType,
 ) => createAction(ActionTypes.GET_POKEMONS_SUCCESS, payload);
 
 export const getPokemonsFailure = (
-    payload: any
+    payload: any,
 ) => createAction(ActionTypes.GET_POKEMONS_FAILURE, payload);
 
 export type ActionType =

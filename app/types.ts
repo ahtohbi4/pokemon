@@ -1,13 +1,23 @@
+// Redux store.
 export interface StoreType {
     [key: string]: any,
 }
 
-export interface RequestedDataType {
-    data: any,
-    error: string|null,
+// Response data state.
+export interface ResponseDataType<T> {
+    data: T | null,
+    error: string | null,
     isLoading: boolean,
 }
 
+export type ResponseIterativeDataType<T> = ResponseDataType<{
+    count: number,
+    next: string,
+    previous: string,
+    results: Array<T>,
+}>;
+
+// Pokemon.
 export interface PokemonType {
     abilities: Array<{
         ability: {
@@ -23,8 +33,7 @@ export interface PokemonType {
     weight: number,
 }
 
-export type PokemonsListType = Array<PokemonType>;
-
+// Pokemon's species.
 export interface SpeciesType {
     color: {
         name: string,
