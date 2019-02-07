@@ -11,6 +11,7 @@ import { PokemonsListResponseType } from './types';
 
 import Title from '@Components/Title';
 
+import Navigation from './components/Navigation';
 import PokemonsList from './components/PokemonsList';
 
 interface PropsType extends InjectRouterPropsType {
@@ -48,6 +49,8 @@ class PokemonsPage extends PureComponent<PropsType> {
                 </Title>
 
                 <PokemonsList pokemons={pokemons} />
+
+                <Navigation {...this.props} />
             </Fragment>
         );
     }
