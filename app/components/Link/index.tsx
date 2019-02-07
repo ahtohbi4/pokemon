@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, memo } from 'react';
 
 import { Container } from './UIComponents';
 
@@ -20,4 +20,4 @@ Link.defaultProps = {
     to: undefined,
 };
 
-export default Link;
+export default memo(Link);
