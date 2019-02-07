@@ -1,7 +1,8 @@
 import React, { FC, memo } from 'react';
 
-import { PokemonsListRequestType } from '../../types';
+import { PokemonsListResponseType } from '../../types';
 
+import Link from '@Components/Link';
 import Loader from '@Components/Loader';
 
 import {
@@ -11,7 +12,7 @@ import {
 } from './UIComponents';
 
 interface PropsType {
-    pokemons: PokemonsListRequestType,
+    pokemons: PokemonsListResponseType,
 }
 
 const PokemonsList: FC<PropsType> = ({ pokemons: { data, error, isLoading } }) => {
@@ -35,13 +36,15 @@ const PokemonsList: FC<PropsType> = ({ pokemons: { data, error, isLoading } }) =
         return null;
     }
 
+    const { results } = data;
+
     return (
         <List>
-            {data.map(({ name }) => (
+            {results.map(({ name }) => (
                 <Item key={name}>
-                    <a href={`#!/pokemon/?id=${name}`}>
+                    <Link to={`/pokemon/?id=${name}`}>
                         {name}
-                    </a>
+                    </Link>
                 </Item>
             ))}
         </List>

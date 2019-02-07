@@ -9,8 +9,8 @@ import { convertToTitle } from '@Utils/formatString';
 import * as actions from './actions';
 import selectPokemonPage from './selectors';
 import {
-    PokemonRequestType,
-    SpeciesRequestType,
+    PokemonResponseType,
+    SpeciesResponseType,
 } from './types';
 
 import Title from '@Components/Title';
@@ -19,11 +19,11 @@ import Link from '@Components/Link';
 import Pokemon from './components/Pokemon';
 
 interface PropsType extends InjectRouterPropsType {
-    pokemon: PokemonRequestType,
-    species: SpeciesRequestType,
+    pokemon: PokemonResponseType,
+    species: SpeciesResponseType,
 
-    getPokemon: (id: string) => void;
-    resetPokemon: () => void;
+    getPokemonRequest: typeof actions.getPokemonRequest,
+    resetPokemon: typeof actions.resetPokemon,
 }
 
 class PokemonPage extends PureComponent<PropsType> {
@@ -42,9 +42,9 @@ class PokemonPage extends PureComponent<PropsType> {
     }
 
     componentDidMount() {
-        const { getPokemon } = this.props;
+        const { getPokemonRequest } = this.props;
 
-        getPokemon(this.id);
+        getPokemonRequest(this.id);
     }
 
     componentWillUnmount() {

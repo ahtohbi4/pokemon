@@ -1,93 +1,42 @@
+import { createAction } from '@Utils/redux';
+
+import { ActionTypes } from './constants';
 import {
-    PokemonType,
-    SpeciesType,
-} from '@Types';
+    PokemonResponseType,
+    SpeciesResponseType,
+} from './types';
 
-import {
-    GET_POKEMON_FAILURE,
-    GET_POKEMON_REQUEST,
-    GET_POKEMON_SUCCESS,
+export const getPokemonRequest = (
+    slug: string,
+) => createAction(ActionTypes.GET_POKEMON_REQUEST, slug);
 
-    GET_SPECIES_FAILURE,
-    GET_SPECIES_REQUEST,
-    GET_SPECIES_SUCCESS,
+export const getPokemonSuccess = (
+    payload: PokemonResponseType,
+) => createAction(ActionTypes.GET_POKEMON_SUCCESS, payload);
 
-    RESET_POKEMON_DATA,
-} from './constants';
+export const getPokemonFailure = (
+    error: any,
+) => createAction(ActionTypes.GET_POKEMON_SUCCESS, error);
 
-interface GetPokemonType {
-    type: string,
-    payload: string,
-}
+export const resetPokemon = () => createAction(ActionTypes.RESET_POKEMON_DATA);
 
-export const getPokemon = (slug: string): GetPokemonType => ({
-    type: GET_POKEMON_REQUEST,
-    payload: slug,
-});
+export const getSpeciesRequest = (
+    slug: string,
+) => createAction(ActionTypes.GET_SPECIES_REQUEST, slug);
 
-interface GetPokemonSuccessType {
-    type: string,
-    payload: PokemonType,
-}
+export const getSpeciesSuccess = (
+    payload: SpeciesResponseType,
+) => createAction(ActionTypes.GET_SPECIES_SUCCESS, payload);
 
-export const getPokemonSuccess = (data: PokemonType): GetPokemonSuccessType => ({
-    type: GET_POKEMON_SUCCESS,
-    payload: data,
-});
-
-interface GetPokemonFailureType {
-    type: string,
-    payload: any,
-}
-
-export const getPokemonFailure = (error: any): GetPokemonFailureType => ({
-    type: GET_POKEMON_FAILURE,
-    payload: error,
-});
-
-interface GetSpeciesType {
-    type: string,
-    payload: string,
-}
-
-export const getSpecies = (slug: string): GetSpeciesType => ({
-    type: GET_SPECIES_REQUEST,
-    payload: slug,
-});
-
-interface GetSpeciesSuccessType {
-    type: string,
-    payload: SpeciesType,
-}
-
-export const getSpeciesSuccess = (data: SpeciesType): GetSpeciesSuccessType => ({
-    type: GET_SPECIES_SUCCESS,
-    payload: data,
-});
-
-interface GetSpeciesFailureType {
-    type: string,
-    payload: any,
-}
-
-export const getSpeciesFailure = (error: any): GetSpeciesFailureType => ({
-    type: GET_SPECIES_FAILURE,
-    payload: error,
-});
-
-interface ResetPokemonType {
-    type: string,
-}
-
-export const resetPokemon = (): ResetPokemonType => ({
-    type: RESET_POKEMON_DATA,
-});
+export const getSpeciesFailure = (
+    error: any,
+) => createAction(ActionTypes.GET_SPECIES_FAILURE, error);
 
 export type ActionType =
-    GetPokemonType &
-    GetPokemonSuccessType &
-    GetPokemonFailureType &
-    GetSpeciesType &
-    GetSpeciesSuccessType &
-    GetSpeciesFailureType &
-    ResetPokemonType;
+    ReturnType<typeof getPokemonRequest> &
+    ReturnType<typeof getPokemonSuccess> &
+    ReturnType<typeof getPokemonFailure> &
+    ReturnType<typeof resetPokemon> &
+    ReturnType<typeof getSpeciesRequest> &
+    ReturnType<typeof getSpeciesSuccess> &
+    ReturnType<typeof getSpeciesFailure>;

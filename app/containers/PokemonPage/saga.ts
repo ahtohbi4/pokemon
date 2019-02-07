@@ -9,10 +9,7 @@ import {
 } from '@Constants';
 
 import * as actions from './actions';
-import {
-    GET_POKEMON_REQUEST,
-    GET_SPECIES_REQUEST,
-} from './constants';
+import { ActionTypes } from './constants';
 
 function* getPokemonSaga(action: actions.ActionType) {
     try {
@@ -23,7 +20,7 @@ function* getPokemonSaga(action: actions.ActionType) {
 
         const { species: { name: speciesSlug } } = pokemon;
 
-        yield put(actions.getSpecies(speciesSlug));
+        yield put(actions.getSpeciesRequest(speciesSlug));
     } catch (error) {
         yield put(actions.getPokemonFailure(error));
     }
@@ -42,7 +39,7 @@ function* getSpeciesSaga(action: actions.ActionType) {
 
 export default function* rootSaga() {
     yield all([
-        takeLatest(GET_POKEMON_REQUEST, getPokemonSaga),
-        takeLatest(GET_SPECIES_REQUEST, getSpeciesSaga),
+        takeLatest(ActionTypes.GET_POKEMON_REQUEST, getPokemonSaga),
+        takeLatest(ActionTypes.GET_SPECIES_REQUEST, getSpeciesSaga),
     ]);
 }

@@ -7,16 +7,16 @@ import { InjectRouterPropsType } from '@Containers/Router';
 
 import * as actions from './actions';
 import selectPokemonsPage from './selectors';
-import { PokemonsListRequestType } from './types';
+import { PokemonsListResponseType } from './types';
 
 import Title from '@Components/Title';
 
 import PokemonsList from './components/PokemonsList';
 
 interface PropsType extends InjectRouterPropsType {
-    pokemons: PokemonsListRequestType,
+    pokemons: PokemonsListResponseType,
 
-    getPokemonsList: () => void,
+    getPokemonsRequest: typeof actions.getPokemonsRequest,
 }
 
 class PokemonsPage extends PureComponent<PropsType> {
@@ -25,10 +25,10 @@ class PokemonsPage extends PureComponent<PropsType> {
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
     componentDidMount() {
-        const { pokemons: { data }, getPokemonsList } = this.props;
+        const { pokemons: { data }, getPokemonsRequest } = this.props;
 
         if (!data) {
-            getPokemonsList();
+            getPokemonsRequest();
         }
     }
 

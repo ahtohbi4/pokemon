@@ -1,8 +1,6 @@
 import {
-    PokemonsListType,
-    RequestedDataType,
+    PokemonType,
+    ResponseIterativeDataType,
 } from '@Types';
 
-export interface PokemonsListRequestType extends RequestedDataType {
-    data: PokemonsListType|null,
-}
+export type PokemonsListResponseType = ResponseIterativeDataType<PokemonType>

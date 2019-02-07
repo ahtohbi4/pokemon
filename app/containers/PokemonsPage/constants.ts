@@ -1,5 +1,7 @@
 export const CONTAINER_ALIAS = 'pokemonsPage';
 
-export const GET_POKEMONS_LIST_REQUEST = 'app/containers/PokemonsPage/GET_POKEMONS_LIST_REQUEST';
-export const GET_POKEMONS_LIST_SUCCESS = 'app/containers/PokemonsPage/GET_POKEMONS_LIST_SUCCESS';
-export const GET_POKEMONS_LIST_FAILURE = 'app/containers/PokemonsPage/GET_POKEMONS_LIST_FAILURE';
+export enum ActionTypes {
+    GET_POKEMONS_REQUEST = 'app/containers/PokemonsPage/GET_POKEMONS_REQUEST',
+    GET_POKEMONS_SUCCESS = 'app/containers/PokemonsPage/GET_POKEMONS_SUCCESS',
+    GET_POKEMONS_FAILURE = 'app/containers/PokemonsPage/GET_POKEMONS_FAILURE',
+}

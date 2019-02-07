@@ -1,40 +1,22 @@
-import { PokemonsListType } from '@Types';
+import { API_GET_POKEMONS_LIST } from '@Constants';
+import { createAction } from '@Utils/redux';
 
-import {
-    GET_POKEMONS_LIST_REQUEST,
-    GET_POKEMONS_LIST_SUCCESS,
-    GET_POKEMONS_LIST_FAILURE,
-} from './constants';
+import { ActionTypes } from './constants';
+import { PokemonsListResponseType } from './types';
 
-interface GetPokemonsListAction {
-    type: string,
-}
+export const getPokemonsRequest = (
+    payload: { url: string } = { url: API_GET_POKEMONS_LIST }
+) => createAction(ActionTypes.GET_POKEMONS_REQUEST, payload);
 
-interface GetPokemonsListSuccessAction {
-    type: string,
-    payload: PokemonsListType,
-}
+export const getPokemonsSuccess = (
+    payload: PokemonsListResponseType
+) => createAction(ActionTypes.GET_POKEMONS_SUCCESS, payload);
 
-interface GetPokemonsListFailureAction {
-    type: string,
-    payload: any,
-}
+export const getPokemonsFailure = (
+    payload: any
+) => createAction(ActionTypes.GET_POKEMONS_FAILURE, payload);
 
 export type ActionType =
-    GetPokemonsListAction&
-    GetPokemonsListSuccessAction&
-    GetPokemonsListFailureAction;
-
-export const getPokemonsList = (): GetPokemonsListAction => ({
-    type: GET_POKEMONS_LIST_REQUEST,
-});
-
-export const getPokemonsListSuccess = (data: PokemonsListType): GetPokemonsListSuccessAction => ({
-    type: GET_POKEMONS_LIST_SUCCESS,
-    payload: data,
-});
-
-export const getPokemonsListFailure = (error: any): GetPokemonsListFailureAction => ({
-    type: GET_POKEMONS_LIST_FAILURE,
-    payload: error,
-});
+    ReturnType<typeof getPokemonsRequest> &
+    ReturnType<typeof getPokemonsSuccess> &
+    ReturnType<typeof getPokemonsFailure>;

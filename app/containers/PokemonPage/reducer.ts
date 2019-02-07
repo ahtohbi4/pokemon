@@ -1,23 +1,13 @@
 import { ActionType } from './actions';
+import { ActionTypes } from './constants';
 import {
-    GET_POKEMON_FAILURE,
-    GET_POKEMON_REQUEST,
-    GET_POKEMON_SUCCESS,
-
-    GET_SPECIES_FAILURE,
-    GET_SPECIES_REQUEST,
-    GET_SPECIES_SUCCESS,
-
-    RESET_POKEMON_DATA,
-} from './constants';
-import {
-    PokemonRequestType,
-    SpeciesRequestType,
+    PokemonResponseType,
+    SpeciesResponseType,
 } from './types';
 
 export interface StoreType {
-    readonly pokemon: PokemonRequestType,
-    readonly species: SpeciesRequestType,
+    readonly pokemon: PokemonResponseType,
+    readonly species: SpeciesResponseType,
 }
 
 const initialState: StoreType = {
@@ -35,7 +25,7 @@ const initialState: StoreType = {
 
 export default (state: StoreType = initialState, action: ActionType): StoreType => {
     switch (action.type) {
-        case GET_POKEMON_REQUEST:
+        case ActionTypes.GET_POKEMON_REQUEST:
             return {
                 ...state,
                 pokemon: {
@@ -45,7 +35,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case GET_POKEMON_SUCCESS:
+        case ActionTypes.GET_POKEMON_SUCCESS:
             return {
                 ...state,
                 pokemon: {
@@ -55,7 +45,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case GET_POKEMON_FAILURE:
+        case ActionTypes.GET_POKEMON_FAILURE:
             return {
                 ...state,
                 pokemon: {
@@ -66,7 +56,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case GET_SPECIES_REQUEST:
+        case ActionTypes.GET_SPECIES_REQUEST:
             return {
                 ...state,
                 species: {
@@ -76,7 +66,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case GET_SPECIES_SUCCESS:
+        case ActionTypes.GET_SPECIES_SUCCESS:
             return {
                 ...state,
                 species: {
@@ -86,7 +76,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case GET_SPECIES_FAILURE:
+        case ActionTypes.GET_SPECIES_FAILURE:
             return {
                 ...state,
                 species: {
@@ -97,7 +87,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case RESET_POKEMON_DATA:
+        case ActionTypes.RESET_POKEMON_DATA:
             return {
                 ...state,
                 pokemon: initialState.pokemon,
