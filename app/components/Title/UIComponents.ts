@@ -2,9 +2,9 @@ import styled, { media } from '@Utils/styled';
 
 import { PropsType } from './';
 
-export const Container = styled.div.attrs({
-    as: ({ tagName }: PropsType) => tagName,
-})<PropsType>`
+export const Container = styled.div.attrs(({ tagName }: PropsType) => ({
+    as: tagName,
+}))<PropsType>`
     ${({ tagName, theme }) => {
         switch (tagName) {
             case 'h1':
