@@ -1,6 +1,6 @@
 import {
     PokemonType,
-    ResponseIterativeDataType,
+    StoredResponseIterativeDataType,
 } from '@Types';
 
-export type PokemonsListResponseType = ResponseIterativeDataType<PokemonType>
+export type StoredPokemonsDataType = StoredResponseIterativeDataType<PokemonType>;

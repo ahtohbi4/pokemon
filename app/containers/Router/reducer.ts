@@ -1,4 +1,4 @@
-import { CHANGE_LOCATION } from './constants';
+import { ActionTypeKeys } from './constants';
 
 import { ActionType } from './actions';
 import { RouterType } from './types';
@@ -18,19 +18,13 @@ const initialState: StoreType = {
 
 export default (state: StoreType = initialState, action: ActionType) => {
     switch (action.type) {
-        case CHANGE_LOCATION: {
-            const { query, pathname } = action.payload;
-
+        case ActionTypeKeys.CHANGE_LOCATION:
             return {
                 ...state,
                 router: {
-                    location: {
-                        query,
-                        pathname,
-                    },
+                    location: action.payload,
                 },
             };
-        }
 
         default:
             return state;

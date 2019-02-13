@@ -4,18 +4,20 @@ export interface StoreType {
 }
 
 // Response data state.
-export interface ResponseDataType<T> {
+export interface StoredResponseDataType<T> {
     data: T | null,
     error: string | null,
     isLoading: boolean,
 }
 
-export type ResponseIterativeDataType<T> = ResponseDataType<{
+export interface ResponseIterativeDataType<T> {
     count: number,
     next: string,
     previous: string,
     results: Array<T>,
-}>;
+}
+
+export type StoredResponseIterativeDataType<T> = StoredResponseDataType<ResponseIterativeDataType<T>>;
 
 // Pokemon.
 export interface PokemonType {

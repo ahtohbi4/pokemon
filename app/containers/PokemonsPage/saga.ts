@@ -2,23 +2,28 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import api from '@Utils/api';
 
-import * as actions from './actions';
-import { ActionTypes } from './constants';
+import {
+    ActionType,
 
-function* getPokemonsSaga(action: actions.ActionType) {
+    getPokemonsFailure,
+    getPokemonsSuccess,
+} from './actions';
+import { ActionTypeKeys } from './constants';
+
+function* getPokemonsSaga(action: ActionType) {
     const { payload: url } = action;
 
     try {
         const { data } = yield call(api.get, url);
 
-        yield put(actions.getPokemonsSuccess(data));
+        yield put(getPokemonsSuccess(data));
     } catch (error) {
-        yield put(actions.getPokemonsFailure(error));
+        yield put(getPokemonsFailure(error));
     }
 }
 
 export default function* rootSaga() {
     yield all([
-        takeLatest(ActionTypes.GET_POKEMONS_REQUEST, getPokemonsSaga),
+        takeLatest(ActionTypeKeys.GET_POKEMONS_REQUEST, getPokemonsSaga),
     ]);
 }

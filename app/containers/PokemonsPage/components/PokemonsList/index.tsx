@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react';
 
-import { PokemonsListResponseType } from '../../types';
+import { StoredPokemonsDataType } from '../../types';
 
 import Link from '@Components/Link';
 import Loader from '@Components/Loader';
@@ -12,7 +12,7 @@ import {
 } from './UIComponents';
 
 interface PropsType {
-    pokemons: PokemonsListResponseType,
+    pokemons: StoredPokemonsDataType,
 }
 
 const PokemonsList: FC<PropsType> = ({ pokemons: { data, error, isLoading } }) => {

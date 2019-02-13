@@ -5,10 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import { URL_PREFIX } from './constants';
 import selectRouter from './selectors';
-import {
-    RouteType,
-    RouterType,
-} from './types';
+import { RouterType } from './types';
 
 import Link from './components/Link';
 import Redirect from './components/Redirect';
@@ -17,13 +14,13 @@ import RouterContext from './components/RouterContext';
 import Switch from './components/Switch';
 
 const { location: { hash: initialHash } } = window;
+const HASH_CHANGE_EVENT_NAME = 'hashchange';
 
 interface PropsType {
     router: RouterType,
-    changeLocation: (route: RouteType) => void,
-}
 
-const HASH_CHANGE_EVENT_NAME = 'hashchange';
+    changeLocation: actions.ChangeLocationActionCreatorType,
+}
 
 export {
     Link,

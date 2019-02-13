@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react';
 
-import { SpeciesResponseType } from '../../types';
+import { StoredSpeciesDataType } from '../../types';
 
 import Loader from '@Components/Loader';
 import Title from '@Components/Title';
@@ -8,7 +8,7 @@ import Title from '@Components/Title';
 import { Name } from './UIComponents';
 
 interface PropsType {
-    species: SpeciesResponseType,
+    species: StoredSpeciesDataType,
 }
 
 const Species: FC<PropsType> = ({ species }) => {

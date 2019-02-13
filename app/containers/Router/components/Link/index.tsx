@@ -11,6 +11,10 @@ interface PropsType {
 }
 
 export default class Link extends PureComponent<PropsType> {
+    static defaultProps = {
+        children: null,
+    };
+
     private get url() {
         const { to } = this.props;
 

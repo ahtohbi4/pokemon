@@ -1,89 +1,63 @@
 import React, { PureComponent } from 'react';
 
-import { getPokemonsRequest } from '../../actions';
-import { PokemonsListResponseType } from '../../types';
+import { GetPokemonsRequestActionCreatorType } from '../../actions';
+import { StoredPokemonsDataType } from '../../types';
 
 import Button from '@Components/Button';
 
 import { Container } from './UIComponents';
 
 interface PropsType {
-    pokemons: PokemonsListResponseType,
+    pokemons: StoredPokemonsDataType,
 
-    getPokemonsRequest: typeof getPokemonsRequest,
+    getPokemons: GetPokemonsRequestActionCreatorType,
+}
+
+enum Directions {
+    NEXT = 'next',
+    PREVIOUS = 'previous',
 }
 
 export default class Navigation extends PureComponent<PropsType> {
-    constructor(props: PropsType) {
-        super(props);
-
-        this.goToNext = this.goToNext.bind(this);
-        this.goToPrevious = this.goToPrevious.bind(this);
-    }
-
-    get hasPreviousData(): boolean {
+    private checkDirection(path: Directions): boolean {
         const { pokemons: { data } } = this.props;
 
         if (data === null) {
             return false;
         }
 
-        const { previous } = data;
+        const { [path]: direction } = data;
 
-        return (previous !== null);
+        return (direction !== null);
     }
 
-    get hasNextData(): boolean {
-        const { pokemons: { data } } = this.props;
-
-        if (data === null) {
-            return false;
-        }
-
-        const { next } = data;
-
-        return (next !== null);
-    }
-
-    goToPrevious() {
-        const { pokemons: { data }, getPokemonsRequest } = this.props;
+    private goTo(path: Directions) {
+        const { pokemons: { data }, getPokemons } = this.props;
 
         if (data === null) {
             return;
         }
 
-        const { previous } = data;
+        const { [path]: direction } = data;
 
-        getPokemonsRequest(previous);
-    }
-
-    goToNext() {
-        const { pokemons: { data }, getPokemonsRequest } = this.props;
-
-        if (data === null) {
-            return;
-        }
-
-        const { next } = data;
-
-        getPokemonsRequest(next);
+        getPokemons(direction);
     }
 
     render() {
         return (
             <Container>
                 <Button
-                    disabled={!this.hasPreviousData}
+                    disabled={!this.checkDirection(Directions.PREVIOUS)}
 
-                    onClick={this.goToPrevious}
+                    onClick={() => this.goTo(Directions.PREVIOUS)}
                 >
                     ←
                 </Button>
 
                 <Button
-                    disabled={!this.hasNextData}
+                    disabled={!this.checkDirection(Directions.NEXT)}
 
-                    onClick={this.goToNext}
+                    onClick={() => this.goTo(Directions.NEXT)}
                 >
                     →
                 </Button>

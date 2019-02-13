@@ -15,6 +15,6 @@ const initialValue: RouterContextType = {
     },
 };
 
-const RouterContext = createContext(initialValue);
+const RouterContext = createContext<RouterContextType>(initialValue);
 
 export default RouterContext;

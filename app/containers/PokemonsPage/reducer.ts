@@ -1,9 +1,9 @@
 import { ActionType } from './actions';
-import { ActionTypes } from './constants';
-import { PokemonsListResponseType } from './types';
+import { ActionTypeKeys } from './constants';
+import { StoredPokemonsDataType } from './types';
 
 export interface StoreType {
-    readonly pokemons: PokemonsListResponseType,
+    readonly pokemons: StoredPokemonsDataType,
 }
 
 const initialState: StoreType = {
@@ -16,7 +16,7 @@ const initialState: StoreType = {
 
 export default (state: StoreType = initialState, action: ActionType): StoreType => {
     switch (action.type) {
-        case ActionTypes.GET_POKEMONS_REQUEST:
+        case ActionTypeKeys.GET_POKEMONS_REQUEST:
             return {
                 ...state,
                 pokemons: {
@@ -26,7 +26,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case ActionTypes.GET_POKEMONS_SUCCESS:
+        case ActionTypeKeys.GET_POKEMONS_SUCCESS:
             return {
                 ...state,
                 pokemons: {
@@ -36,7 +36,7 @@ export default (state: StoreType = initialState, action: ActionType): StoreType 
                 },
             };
 
-        case ActionTypes.GET_POKEMONS_FAILURE:
+        case ActionTypeKeys.GET_POKEMONS_FAILURE:
             return {
                 ...state,
                 pokemons: {

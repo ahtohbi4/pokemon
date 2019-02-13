@@ -6,11 +6,13 @@ import { Helmet } from 'react-helmet';
 import { InjectRouterPropsType } from '@Containers/Router';
 import { convertToTitle } from '@Utils/formatString';
 
+import { AppContext } from '../App';
+
 import * as actions from './actions';
 import selectPokemonPage from './selectors';
 import {
-    PokemonResponseType,
-    SpeciesResponseType,
+    StoredPokemonDataType,
+    StoredSpeciesDataType,
 } from './types';
 
 import Title from '@Components/Title';
@@ -19,17 +21,19 @@ import Link from '@Components/Link';
 import Pokemon from './components/Pokemon';
 
 interface PropsType extends InjectRouterPropsType {
-    pokemon: PokemonResponseType,
-    species: SpeciesResponseType,
+    pokemon: StoredPokemonDataType,
+    species: StoredSpeciesDataType,
 
-    getPokemonRequest: typeof actions.getPokemonRequest,
-    resetPokemon: typeof actions.resetPokemon,
+    getPokemonRequest: actions.GetPokemonRequestActionCreatorType,
+    resetPokemon: actions.ResetPokemonActionCreatorType,
 }
 
 class PokemonPage extends PureComponent<PropsType> {
     static mapStateToProps = selectPokemonPage;
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
+
+    static contextType = AppContext;
 
     private get id(): string {
         const { router: { location: { query: { id } } } } = this.props;
@@ -47,9 +51,24 @@ class PokemonPage extends PureComponent<PropsType> {
         getPokemonRequest(this.id);
     }
 
+    componentDidUpdate() {
+        const { species: { data } } = this.props;
+
+        if (!data) {
+            return;
+        }
+
+        const { setHeaderColor } = this.context;
+        const { color: { name: color } } = data;
+
+        setHeaderColor(color);
+    }
+
     componentWillUnmount() {
+        const { resetHeaderColor } = this.context;
         const { resetPokemon } = this.props;
 
+        resetHeaderColor();
         resetPokemon();
     }
 

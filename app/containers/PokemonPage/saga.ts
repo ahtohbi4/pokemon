@@ -9,7 +9,7 @@ import {
 } from '@Constants';
 
 import * as actions from './actions';
-import { ActionTypes } from './constants';
+import { ActionTypeKeys } from './constants';
 
 function* getPokemonSaga(action: actions.ActionType) {
     try {
@@ -39,7 +39,7 @@ function* getSpeciesSaga(action: actions.ActionType) {
 
 export default function* rootSaga() {
     yield all([
-        takeLatest(ActionTypes.GET_POKEMON_REQUEST, getPokemonSaga),
-        takeLatest(ActionTypes.GET_SPECIES_REQUEST, getSpeciesSaga),
+        takeLatest(ActionTypeKeys.GET_POKEMON_REQUEST, getPokemonSaga),
+        takeLatest(ActionTypeKeys.GET_SPECIES_REQUEST, getSpeciesSaga),
     ]);
 }

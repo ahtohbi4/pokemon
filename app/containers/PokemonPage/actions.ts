@@ -1,42 +1,73 @@
-import { createAction } from '@Utils/redux';
+import createAction from 'create-action-ts';
 
-import { ActionTypes } from './constants';
 import {
-    PokemonResponseType,
-    SpeciesResponseType,
-} from './types';
+    PokemonType,
+    SpeciesType,
+} from '@Types';
 
-export const getPokemonRequest = (
-    slug: string,
-) => createAction(ActionTypes.GET_POKEMON_REQUEST, slug);
+import { ActionTypeKeys } from './constants';
 
-export const getPokemonSuccess = (
-    payload: PokemonResponseType,
-) => createAction(ActionTypes.GET_POKEMON_SUCCESS, payload);
+/**
+ * Creates an action to request of the pokemon's data.
+ *
+ * @param {string} slug
+ */
+export const getPokemonRequest = (slug: string) => createAction(ActionTypeKeys.GET_POKEMON_REQUEST, slug);
+export type GetPokemonRequestActionCreatorType = typeof getPokemonRequest;
 
-export const getPokemonFailure = (
-    error: any,
-) => createAction(ActionTypes.GET_POKEMON_SUCCESS, error);
+/**
+ * Creates an action with successful response of the pokemon's data.
+ *
+ * @param {PokemonType} data
+ */
+export const getPokemonSuccess = (data: PokemonType) => createAction(ActionTypeKeys.GET_POKEMON_SUCCESS, data);
+type GetPokemonSuccessActionCreatorType = typeof getPokemonSuccess;
 
-export const resetPokemon = () => createAction(ActionTypes.RESET_POKEMON_DATA);
+/**
+ * Creates an action with a failed response of the pokemon's data.
+ *
+ * @param {*} [error]
+ */
+export const getPokemonFailure = (error: any) => createAction(ActionTypeKeys.GET_POKEMON_FAILURE, error);
+type GetPokemonFailureActionCreatorType = typeof getPokemonFailure;
 
-export const getSpeciesRequest = (
-    slug: string,
-) => createAction(ActionTypes.GET_SPECIES_REQUEST, slug);
+/**
+ * Creates an action to reset pokemon's data.
+ */
+export const resetPokemon = () => createAction(ActionTypeKeys.RESET_POKEMON_DATA);
+export type ResetPokemonActionCreatorType = typeof resetPokemon;
 
-export const getSpeciesSuccess = (
-    payload: SpeciesResponseType,
-) => createAction(ActionTypes.GET_SPECIES_SUCCESS, payload);
+/**
+ * Creates an action to request of the pokemon's species data.
+ *
+ * @param {string} slug
+ */
+export const getSpeciesRequest = (slug: string) => createAction(ActionTypeKeys.GET_SPECIES_REQUEST, slug);
+type GetSpeciesRequestActionCreatorType = typeof getSpeciesRequest;
 
-export const getSpeciesFailure = (
-    error: any,
-) => createAction(ActionTypes.GET_SPECIES_FAILURE, error);
+/**
+ * Creates an action with successful response of the pokemon's species data.
+ *
+ * @param {SpeciesType} data
+ */
+export const getSpeciesSuccess = (data: SpeciesType) => createAction(ActionTypeKeys.GET_SPECIES_SUCCESS, data);
+type GetSpeciesSuccessActionCreatorType = typeof getSpeciesSuccess;
+
+/**
+ * Creates an action with a failed response of the pokemon's species data.
+ *
+ * @param {*} [error]
+ */
+export const getSpeciesFailure = (error: any) => createAction(ActionTypeKeys.GET_SPECIES_FAILURE, error);
+type GetSpeciesFailureActionCreatorType = typeof getSpeciesFailure;
 
 export type ActionType =
-    ReturnType<typeof getPokemonRequest> &
-    ReturnType<typeof getPokemonSuccess> &
-    ReturnType<typeof getPokemonFailure> &
-    ReturnType<typeof resetPokemon> &
-    ReturnType<typeof getSpeciesRequest> &
-    ReturnType<typeof getSpeciesSuccess> &
-    ReturnType<typeof getSpeciesFailure>;
+    ReturnType<GetPokemonFailureActionCreatorType> |
+    ReturnType<GetPokemonRequestActionCreatorType> |
+    ReturnType<GetPokemonSuccessActionCreatorType> |
+
+    ReturnType<GetSpeciesFailureActionCreatorType> |
+    ReturnType<GetSpeciesRequestActionCreatorType> |
+    ReturnType<GetSpeciesSuccessActionCreatorType> |
+
+    ReturnType<ResetPokemonActionCreatorType>;

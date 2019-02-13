@@ -5,9 +5,12 @@ import { Helmet } from 'react-helmet';
 
 import { InjectRouterPropsType } from '@Containers/Router';
 
-import * as actions from './actions';
+import {
+    GetPokemonsRequestActionCreatorType,
+    getPokemonsRequest,
+} from './actions';
 import selectPokemonsPage from './selectors';
-import { PokemonsListResponseType } from './types';
+import { StoredPokemonsDataType } from './types';
 
 import Title from '@Components/Title';
 
@@ -15,21 +18,23 @@ import Navigation from './components/Navigation';
 import PokemonsList from './components/PokemonsList';
 
 interface PropsType extends InjectRouterPropsType {
-    pokemons: PokemonsListResponseType,
+    pokemons: StoredPokemonsDataType,
 
-    getPokemonsRequest: typeof actions.getPokemonsRequest,
+    getPokemons: GetPokemonsRequestActionCreatorType,
 }
 
 class PokemonsPage extends PureComponent<PropsType> {
     static mapStateToProps = selectPokemonsPage;
 
-    static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
+    static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+        getPokemons: getPokemonsRequest,
+    }, dispatch);
 
     componentDidMount() {
-        const { pokemons: { data }, getPokemonsRequest } = this.props;
+        const { pokemons: { data }, getPokemons } = this.props;
 
         if (!data) {
-            getPokemonsRequest();
+            getPokemons();
         }
     }
 

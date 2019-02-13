@@ -1,9 +1,9 @@
 import {
     PokemonType,
-    ResponseDataType,
     SpeciesType,
+    StoredResponseDataType,
 } from '@Types';
 
-export type PokemonResponseType = ResponseDataType<PokemonType>;
+export type StoredPokemonDataType = StoredResponseDataType<PokemonType>;
 
-export type SpeciesResponseType = ResponseDataType<SpeciesType>;
+export type StoredSpeciesDataType = StoredResponseDataType<SpeciesType>;

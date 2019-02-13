@@ -1,8 +1,8 @@
 import React, { FC, Fragment, memo } from 'react';
 
 import {
-    PokemonResponseType,
-    SpeciesResponseType,
+    StoredPokemonDataType,
+    StoredSpeciesDataType,
 } from '../../types';
 
 import Gallery, { PicturesListType } from '@Components/Gallery';
@@ -12,8 +12,8 @@ import Title from '@Components/Title';
 import Species from '../Species';
 
 interface PropsType {
-    pokemon: PokemonResponseType,
-    species: SpeciesResponseType,
+    pokemon: StoredPokemonDataType,
+    species: StoredSpeciesDataType,
 }
 
 const Pokemon: FC<PropsType> = ({ pokemon, species }) => {
