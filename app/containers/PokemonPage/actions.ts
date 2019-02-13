@@ -10,9 +10,9 @@ import { ActionTypeKeys } from './constants';
 /**
  * Creates an action to request of the pokemon's data.
  *
- * @param {string} slug
+ * @param {string} id
  */
-export const getPokemonRequest = (slug: string) => createAction(ActionTypeKeys.GET_POKEMON_REQUEST, slug);
+export const getPokemonRequest = (id: string) => createAction(ActionTypeKeys.GET_POKEMON_REQUEST, id);
 export type GetPokemonRequestActionCreatorType = typeof getPokemonRequest;
 
 /**
@@ -40,10 +40,10 @@ export type ResetPokemonActionCreatorType = typeof resetPokemon;
 /**
  * Creates an action to request of the pokemon's species data.
  *
- * @param {string} slug
+ * @param {string} id
  */
-export const getSpeciesRequest = (slug: string) => createAction(ActionTypeKeys.GET_SPECIES_REQUEST, slug);
-type GetSpeciesRequestActionCreatorType = typeof getSpeciesRequest;
+export const getSpeciesRequest = (id: string) => createAction(ActionTypeKeys.GET_SPECIES_REQUEST, id);
+export type GetSpeciesRequestActionCreatorType = typeof getSpeciesRequest;
 
 /**
  * Creates an action with successful response of the pokemon's species data.

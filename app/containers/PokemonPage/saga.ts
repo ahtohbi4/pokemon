@@ -8,32 +8,44 @@ import {
     API_GET_SPECIES,
 } from '@Constants';
 
-import * as actions from './actions';
+import {
+    GetPokemonRequestActionCreatorType,
+    GetSpeciesRequestActionCreatorType,
+
+    getPokemonFailure,
+    getPokemonSuccess,
+
+    getSpeciesFailure,
+    getSpeciesRequest,
+    getSpeciesSuccess,
+} from './actions';
 import { ActionTypeKeys } from './constants';
 
-function* getPokemonSaga(action: actions.ActionType) {
+function* getPokemonSaga(action: ReturnType<GetPokemonRequestActionCreatorType>) {
+    const { payload: id } = action;
+
     try {
-        const { payload: id } = action;
         const { data: pokemon } = yield call(api.get, interpolate(API_GET_POKEMON, { id }));
 
-        yield put(actions.getPokemonSuccess(pokemon));
+        yield put(getPokemonSuccess(pokemon));
 
         const { species: { name: speciesSlug } } = pokemon;
 
-        yield put(actions.getSpeciesRequest(speciesSlug));
+        yield put(getSpeciesRequest(speciesSlug));
     } catch (error) {
-        yield put(actions.getPokemonFailure(error));
+        yield put(getPokemonFailure(error));
     }
 }
 
-function* getSpeciesSaga(action: actions.ActionType) {
+function* getSpeciesSaga(action: ReturnType<GetSpeciesRequestActionCreatorType>) {
+    const { payload: id } = action;
+
     try {
-        const { payload: id } = action;
         const { data: species } = yield call(api.get, interpolate(API_GET_SPECIES, { id }));
 
-        yield put(actions.getSpeciesSuccess(species));
+        yield put(getSpeciesSuccess(species));
     } catch (error) {
-        yield put(actions.getSpeciesFailure(error));
+        yield put(getSpeciesFailure(error));
     }
 }
 
