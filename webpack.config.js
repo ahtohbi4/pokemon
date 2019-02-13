@@ -6,52 +6,66 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const baseDir = process.cwd();
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+    devtool: 'cheap-module-source-map',
 
-  entry: './app',
+    entry: './app',
 
-  output: {
-    filename: '[name].js?hash=[hash]',
-    path: path.join(baseDir, 'build/'),
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-      },
-
-      {
-        test: /\.(js|ts)x?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-    ],
-  },
-
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './app/index.html',
-      filename: './index.html',
-    }),
-    new ForkTsCheckerWebpackPlugin(),
-  ],
-
-  resolve: {
-    alias: {
-      '@Constants': path.resolve(baseDir, 'app/constants'),
-      '@Types': path.resolve(baseDir, 'app/types'),
-
-      '@Components': path.resolve(baseDir, 'app/components/'),
-      '@Containers': path.resolve(baseDir, 'app/containers/'),
-      '@Utils': path.resolve(baseDir, 'app/utils/'),
+    output: {
+        filename: '[name].js?hash=[hash]',
+        path: path.join(baseDir, 'build/'),
     },
-    extensions: [
-        ".js",
-        ".json",
-        ".ts",
-        ".tsx"
+
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                loader: 'html-loader',
+            },
+
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            limit: 10 * 1024,
+                            name: '[path][name].[hash].[ext]',
+                        },
+                    },
+                    { loader: 'image-webpack-loader' },
+                ],
+            },
+
+            {
+                test: /\.(js|ts)x?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
+        ],
+    },
+
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './app/index.html',
+            filename: './index.html',
+        }),
+        new ForkTsCheckerWebpackPlugin(),
     ],
-  },
+
+    resolve: {
+        alias: {
+            '@Constants': path.resolve(baseDir, 'app/constants'),
+            '@Types': path.resolve(baseDir, 'app/types'),
+
+            '@Components': path.resolve(baseDir, 'app/components/'),
+            '@Containers': path.resolve(baseDir, 'app/containers/'),
+            '@Utils': path.resolve(baseDir, 'app/utils/'),
+        },
+        extensions: [
+            ".js",
+            ".json",
+            ".ts",
+            ".tsx"
+        ],
+    },
 };
