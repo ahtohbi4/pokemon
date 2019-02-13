@@ -46,8 +46,17 @@ module.exports = {
 
     plugins: [
         new HtmlWebPackPlugin({
-            template: './app/index.html',
             filename: './index.html',
+            minify: {
+                collapseWhitespace: true,
+                keepClosingSlash: true,
+                removeComments: true,
+                removeEmptyAttributes: true,
+                removeRedundantAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true,
+            },
+            template: './app/index.html',
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],
