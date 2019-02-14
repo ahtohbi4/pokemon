@@ -1,7 +1,7 @@
-export const API_BASE_URI = 'https://pokeapi.co/api/v2/';
+export enum ApiUrls {
+    BASE = 'https://pokeapi.co/api/v2/',
 
-export const API_GET_POKEMONS_LIST = 'pokemon/?limit=100';
-
-export const API_GET_POKEMON = 'pokemon/{id}/';
-
-export const API_GET_SPECIES = 'pokemon-species/{id}/';
+    GET_POKEMONS_LIST = 'pokemon/?limit=100',
+    GET_POKEMON = 'pokemon/{id}/',
+    GET_SPECIES = 'pokemon-species/{id}/',
+}

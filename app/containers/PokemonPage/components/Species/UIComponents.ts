@@ -2,7 +2,7 @@ import styled from '@Utils/styled';
 import { readableColor } from 'polished';
 
 interface NamePropsType {
-    color: string,
+    color: string;
 }
 
 export const Name = styled.div<NamePropsType>`

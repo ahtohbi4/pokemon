@@ -11,9 +11,9 @@ import Router, { Redirect, Route, Switch } from '@Containers/Router';
 import App from '@Containers/App';
 import Theme from '@Containers/Theme';
 
+import NotFoundPage from '@Containers/NotFoundPage';
 import PokemonPage from '@Containers/PokemonPage';
 import PokemonsPage from '@Containers/PokemonsPage';
-import NotFoundPage from '@Containers/NotFoundPage';
 
 const store = configureStore();
 

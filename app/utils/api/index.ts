@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { API_BASE_URI } from '../../constants';
+import { ApiUrls } from '@Constants';
 
 const api = axios.create({
-    baseURL: API_BASE_URI,
+    baseURL: ApiUrls.BASE,
     headers: {
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',

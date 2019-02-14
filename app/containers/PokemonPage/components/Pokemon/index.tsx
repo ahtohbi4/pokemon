@@ -12,8 +12,8 @@ import Title from '@Components/Title';
 import Species from '../Species';
 
 interface PropsType {
-    pokemon: StoredPokemonDataType,
-    species: StoredSpeciesDataType,
+    pokemon: StoredPokemonDataType;
+    species: StoredSpeciesDataType;
 }
 
 const Pokemon: FC<PropsType> = ({ pokemon, species }) => {

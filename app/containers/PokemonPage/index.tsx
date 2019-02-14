@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import { InjectRouterPropsType } from '@Containers/Router';
 import { convertToTitle } from '@Utils/formatString';
@@ -15,25 +15,25 @@ import {
     StoredSpeciesDataType,
 } from './types';
 
-import Title from '@Components/Title';
 import Link from '@Components/Link';
+import Title from '@Components/Title';
 
 import Pokemon from './components/Pokemon';
 
 interface PropsType extends InjectRouterPropsType {
-    pokemon: StoredPokemonDataType,
-    species: StoredSpeciesDataType,
+    pokemon: StoredPokemonDataType;
+    species: StoredSpeciesDataType;
 
-    getPokemonRequest: actions.GetPokemonRequestActionCreatorType,
-    resetPokemon: actions.ResetPokemonActionCreatorType,
+    getPokemonRequest: actions.GetPokemonRequestActionCreatorType;
+    resetPokemon: actions.ResetPokemonActionCreatorType;
 }
 
 class PokemonPage extends PureComponent<PropsType> {
+    static contextType = AppContext;
+
     static mapStateToProps = selectPokemonPage;
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
-
-    static contextType = AppContext;
 
     private get id(): string {
         const { router: { location: { query: { id } } } } = this.props;

@@ -1,14 +1,14 @@
 export interface RouteType {
-    pathname: string|undefined,
+    pathname: string|undefined;
     query: {
         [key: string]: string,
-    },
+    };
 }
 
 export interface RouterType {
-    location: RouteType,
+    location: RouteType;
 }
 
 export interface InjectRouterPropsType {
-    router: RouterType,
+    router: RouterType;
 }

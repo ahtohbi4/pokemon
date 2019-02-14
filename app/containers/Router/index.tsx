@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './actions';
 import { URL_PREFIX } from './constants';
@@ -17,9 +17,9 @@ const { location: { hash: initialHash } } = window;
 const HASH_CHANGE_EVENT_NAME = 'hashchange';
 
 interface PropsType {
-    router: RouterType,
+    router: RouterType;
 
-    changeLocation: actions.ChangeLocationActionCreatorType,
+    changeLocation: actions.ChangeLocationActionCreatorType;
 }
 
 export {
@@ -45,6 +45,7 @@ class Router extends PureComponent<PropsType> {
             .filter((item) => (item !== ''));
 
         return {
+            pathname: pathname.replace(/([^/])$/g, (_matches, lastSymbol) => `${lastSymbol}/`),
             query: query
                 .split('&')
                 .filter((pair) => (pair !== ''))
@@ -56,7 +57,6 @@ class Router extends PureComponent<PropsType> {
                         [key]: (value === undefined) ? true : value,
                     };
                 }, {}),
-            pathname: pathname.replace(/([^/])$/g, (_matches, lastSymbol) => `${lastSymbol}/`),
         };
     }
 

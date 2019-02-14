@@ -21,8 +21,8 @@ export const DEFAULT_THEME = {
         },
 
         text: {
-            normal: '#586069',
             light: '#ededee',
+            normal: '#586069',
         },
     },
 

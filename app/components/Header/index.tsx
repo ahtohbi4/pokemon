@@ -3,7 +3,7 @@ import React, { FC, memo } from 'react';
 import { Container } from './UIComponents';
 
 interface PropsTypes {
-    color?: string,
+    color?: string;
 }
 
 const Header: FC<PropsTypes> = ({ color }) => (

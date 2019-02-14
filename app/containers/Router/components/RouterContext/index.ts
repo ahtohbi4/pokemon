@@ -3,7 +3,7 @@ import { createContext } from 'react';
 import { RouterType } from '../../types';
 
 interface RouterContextType {
-    router: RouterType,
+    router: RouterType;
 }
 
 const initialValue: RouterContextType = {

@@ -8,9 +8,9 @@ import Button from '@Components/Button';
 import { Container } from './UIComponents';
 
 interface PropsType {
-    pokemons: StoredPokemonsDataType,
+    pokemons: StoredPokemonsDataType;
 
-    getPokemons: GetPokemonsRequestActionCreatorType,
+    getPokemons: GetPokemonsRequestActionCreatorType;
 }
 
 enum Directions {
@@ -62,6 +62,6 @@ export default class Navigation extends PureComponent<PropsType> {
                     →
                 </Button>
             </Container>
-        )
+        );
     }
 }

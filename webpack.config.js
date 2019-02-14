@@ -5,6 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const baseDir = process.cwd();
 
+/* tslint:disable:object-literal-sort-keys */
 module.exports = {
     devtool: 'cheap-module-source-map',
 
@@ -71,10 +72,10 @@ module.exports = {
             '@Utils': path.resolve(baseDir, 'app/utils/'),
         },
         extensions: [
-            ".js",
-            ".json",
-            ".ts",
-            ".tsx"
+            '.js',
+            '.json',
+            '.ts',
+            '.tsx',
         ],
     },
 };

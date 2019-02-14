@@ -8,7 +8,7 @@ import { PicturesListType } from './types';
 import { Container } from './UIComponents';
 
 interface PropsType {
-    pictures: PicturesListType,
+    pictures: PicturesListType;
 }
 
 export * from './types';

@@ -1,13 +1,13 @@
 import React, { Fragment, PureComponent } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import { InjectRouterPropsType } from '@Containers/Router';
 
 import {
-    GetPokemonsRequestActionCreatorType,
     getPokemonsRequest,
+    GetPokemonsRequestActionCreatorType,
 } from './actions';
 import selectPokemonsPage from './selectors';
 import { StoredPokemonsDataType } from './types';
@@ -18,9 +18,9 @@ import Navigation from './components/Navigation';
 import PokemonsList from './components/PokemonsList';
 
 interface PropsType extends InjectRouterPropsType {
-    pokemons: StoredPokemonsDataType,
+    pokemons: StoredPokemonsDataType;
 
-    getPokemons: GetPokemonsRequestActionCreatorType,
+    getPokemons: GetPokemonsRequestActionCreatorType;
 }
 
 class PokemonsPage extends PureComponent<PropsType> {
@@ -28,7 +28,7 @@ class PokemonsPage extends PureComponent<PropsType> {
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
         getPokemons: getPokemonsRequest,
-    }, dispatch);
+    }, dispatch)
 
     componentDidMount() {
         const { pokemons: { data }, getPokemons } = this.props;

@@ -1,15 +1,15 @@
-import React, { FC, ReactNode, memo } from 'react';
+import React, { FC, memo, ReactNode } from 'react';
 
 import { Types } from './constants';
 
 import { Container } from './UIComponents';
 
 interface PropsType {
-    onClick: () => void,
+    onClick: () => void;
 
-    children?: ReactNode,
-    disabled?: boolean,
-    type?: Types,
+    children?: ReactNode;
+    disabled?: boolean;
+    type?: Types;
 }
 
 export * from './constants';

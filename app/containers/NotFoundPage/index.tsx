@@ -1,8 +1,8 @@
 import React, { Fragment, PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { InjectRouterPropsType } from '@Containers/Router';
 import Title from '@Components/Title';
+import { InjectRouterPropsType } from '@Containers/Router';
 
 interface PropsType extends InjectRouterPropsType {}
 

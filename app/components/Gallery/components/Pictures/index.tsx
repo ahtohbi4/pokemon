@@ -12,7 +12,7 @@ import {
 } from './UIComponents';
 
 interface PropsType {
-    pictures: PicturesListType,
+    pictures: PicturesListType;
 }
 
 const Pictures: FC<PropsType> = ({ pictures }) => {

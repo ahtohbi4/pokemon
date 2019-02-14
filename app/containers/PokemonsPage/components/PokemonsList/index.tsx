@@ -12,7 +12,7 @@ import {
 } from './UIComponents';
 
 interface PropsType {
-    pokemons: StoredPokemonsDataType,
+    pokemons: StoredPokemonsDataType;
 }
 
 const PokemonsList: FC<PropsType> = ({ pokemons: { data, error, isLoading } }) => {

@@ -3,7 +3,7 @@ import { ActionTypeKeys } from './constants';
 import { StoredPokemonsDataType } from './types';
 
 export interface StoreType {
-    readonly pokemons: StoredPokemonsDataType,
+    readonly pokemons: StoredPokemonsDataType;
 }
 
 const initialState: StoreType = {

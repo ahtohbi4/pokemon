@@ -4,8 +4,8 @@ import { InjectRouterPropsType } from '../../types';
 import RouterContext from '../RouterContext';
 
 export interface PropsType {
-    component: ComponentType<InjectRouterPropsType>,
-    path: string,
+    component: ComponentType<InjectRouterPropsType>;
+    path: string;
 }
 
 // It should be extended from Component to correct working of context.
@@ -14,10 +14,10 @@ export default class Route extends Component<PropsType> {
 
     render() {
         const { router } = this.context;
-        const { component: Component, ...props } = this.props;
+        const { component: PageContainer, ...props } = this.props;
 
         return (
-            <Component {...props} router={router} />
+            <PageContainer {...props} router={router} />
         );
     }
 }

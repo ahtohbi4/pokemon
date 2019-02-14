@@ -1,7 +1,7 @@
 export const convertToTitle = ([firstLetter, ...rest]: string) => `${firstLetter.toUpperCase()}${rest.join('')}`;
 
 interface ParamsType {
-    [key: string]: string,
+    [key: string]: string;
 }
 
 export const interpolate = (template: string, params: ParamsType): string => template

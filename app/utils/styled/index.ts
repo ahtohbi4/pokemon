@@ -25,7 +25,7 @@ export {
 export default styled;
 
 interface MediaType {
-    [key: string]: (css: TemplateStringsArray) => string,
+    [key: string]: (css: TemplateStringsArray) => string;
 }
 
 export const media: MediaType = Object.entries(DEVICES_SIZES).reduce(

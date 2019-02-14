@@ -3,20 +3,15 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import api from '@Utils/api';
 import { interpolate } from '@Utils/formatString';
 
-import {
-    API_GET_POKEMON,
-    API_GET_SPECIES,
-} from '@Constants';
+import { ApiUrls } from '@Constants';
 
 import {
-    GetPokemonRequestActionCreatorType,
-    GetSpeciesRequestActionCreatorType,
-
     getPokemonFailure,
+    GetPokemonRequestActionCreatorType,
     getPokemonSuccess,
-
     getSpeciesFailure,
     getSpeciesRequest,
+    GetSpeciesRequestActionCreatorType,
     getSpeciesSuccess,
 } from './actions';
 import { ActionTypeKeys } from './constants';
@@ -25,7 +20,7 @@ function* getPokemonSaga(action: ReturnType<GetPokemonRequestActionCreatorType>)
     const { payload: id } = action;
 
     try {
-        const { data: pokemon } = yield call(api.get, interpolate(API_GET_POKEMON, { id }));
+        const { data: pokemon } = yield call(api.get, interpolate(ApiUrls.GET_POKEMON, { id }));
 
         yield put(getPokemonSuccess(pokemon));
 
@@ -41,7 +36,7 @@ function* getSpeciesSaga(action: ReturnType<GetSpeciesRequestActionCreatorType>)
     const { payload: id } = action;
 
     try {
-        const { data: species } = yield call(api.get, interpolate(API_GET_SPECIES, { id }));
+        const { data: species } = yield call(api.get, interpolate(ApiUrls.GET_SPECIES, { id }));
 
         yield put(getSpeciesSuccess(species));
     } catch (error) {

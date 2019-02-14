@@ -1,11 +1,11 @@
-import React, { FC, ReactNode, memo } from 'react';
+import React, { FC, memo, ReactNode } from 'react';
 
 import { Container } from './UIComponents';
 
 export interface PropsType {
-    children?: ReactNode,
-    href?: string,
-    to?: string,
+    children?: ReactNode;
+    href?: string;
+    to?: string;
 }
 
 const Link: FC<PropsType> = ({ children, ...props }) => (

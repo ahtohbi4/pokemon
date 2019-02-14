@@ -1,27 +1,31 @@
-import React, { Fragment, PureComponent, createContext } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
+import React, { createContext, Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './actions';
 import selectApp from './selectors';
 
 import ErrorBoundary from '@Components/ErrorBoundary';
-import Header from '@Components/Header';
 import Footer from '@Components/Footer';
+import Header from '@Components/Header';
 import PageBody from '@Components/PageBody';
 
 import { GlobalStyle } from './UIComponents';
 
 interface PropsType {
-    resetHeaderColor: actions.ResetHeaderColorActionCreatorType,
-    setHeaderColor: actions.SetHeaderColorActionCreatorType,
+    resetHeaderColor: actions.ResetHeaderColorActionCreatorType;
+    setHeaderColor: actions.SetHeaderColorActionCreatorType;
 
-    headerColor?: string,
+    headerColor?: string;
 }
 
 export const AppContext = createContext({});
 
 class App extends PureComponent<PropsType> {
+    static defaultProps = {
+        headerColor: undefined,
+    };
+
     static mapStateToProps = selectApp;
 
     static mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
@@ -38,8 +42,8 @@ class App extends PureComponent<PropsType> {
                 <PageBody>
                     <ErrorBoundary>
                         <AppContext.Provider value={{
-                            setHeaderColor,
                             resetHeaderColor,
+                            setHeaderColor,
                         }}>
                             {children}
                         </AppContext.Provider>

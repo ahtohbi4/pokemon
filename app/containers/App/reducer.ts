@@ -2,7 +2,7 @@ import { ActionType } from './actions';
 import { ActionTypeKeys } from './constants';
 
 export interface StoreType {
-    readonly headerColor?: string,
+    readonly headerColor?: string;
 }
 
 const initialState: StoreType = {
@@ -26,4 +26,4 @@ export default (state: StoreType = initialState, action: ActionType) => {
         default:
             return state;
     }
-}
+};

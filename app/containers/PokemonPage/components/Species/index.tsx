@@ -8,7 +8,7 @@ import Title from '@Components/Title';
 import { Name } from './UIComponents';
 
 interface PropsType {
-    species: StoredSpeciesDataType,
+    species: StoredSpeciesDataType;
 }
 
 const Species: FC<PropsType> = ({ species }) => {

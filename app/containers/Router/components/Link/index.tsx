@@ -5,9 +5,9 @@ import { URL_PREFIX } from '../../constants';
 import { Container } from './UIComponents';
 
 interface PropsType {
-    to: string,
+    to: string;
 
-    children?: ReactNode,
+    children?: ReactNode;
 }
 
 export default class Link extends PureComponent<PropsType> {

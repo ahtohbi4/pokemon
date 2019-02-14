@@ -1,6 +1,6 @@
 import createAction from 'create-action-ts';
 
-import { API_GET_POKEMONS_LIST } from '@Constants';
+import { ApiUrls } from '@Constants';
 import {
     PokemonType,
     ResponseIterativeDataType,
@@ -13,7 +13,7 @@ import { ActionTypeKeys } from './constants';
  *
  * @param {string} [url=<API_GET_POKEMONS_LIST>]
  */
-export const getPokemonsRequest = (url: string = API_GET_POKEMONS_LIST) => createAction(
+export const getPokemonsRequest = (url: string = ApiUrls.GET_POKEMONS_LIST) => createAction(
     ActionTypeKeys.GET_POKEMONS_REQUEST,
     url,
 );

@@ -5,7 +5,7 @@ import Title from '@Components/Title';
 interface PropsType {}
 
 interface StateType {
-    hasError: boolean,
+    hasError: boolean;
 }
 
 export default class ErrorBoundary extends PureComponent<PropsType, StateType> {
