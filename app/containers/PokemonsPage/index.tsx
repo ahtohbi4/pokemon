@@ -12,7 +12,7 @@ import {
 import selectPokemonsPage from './selectors';
 import { StoredPokemonsDataType } from './types';
 
-import Title from '@Components/Title';
+import PageTitle from '@Components/PageTitle';
 
 import Navigation from './components/Navigation';
 import PokemonsList from './components/PokemonsList';
@@ -49,9 +49,9 @@ class PokemonsPage extends PureComponent<PropsType> {
                     </title>
                 </Helmet>
 
-                <Title>
+                <PageTitle>
                     Pokemons
-                </Title>
+                </PageTitle>
 
                 <PokemonsList pokemons={pokemons} />
 

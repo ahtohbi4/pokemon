@@ -24,7 +24,7 @@ export const Container = styled.header`
         bottom: 0;
         left: 0;
 
-        background-image: linear-gradient(to top, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0) 15%);
+        background-image: linear-gradient(to top, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
 
         content: '';
     }

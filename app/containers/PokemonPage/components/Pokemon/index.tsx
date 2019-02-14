@@ -7,9 +7,10 @@ import {
 
 import Gallery, { PicturesListType } from '@Components/Gallery';
 import Loader from '@Components/Loader';
-import Title from '@Components/Title';
 
 import Species from '../Species';
+
+import { Title } from './UIComponents';
 
 interface PropsType {
     pokemon: StoredPokemonDataType;
@@ -41,7 +42,7 @@ const Pokemon: FC<PropsType> = ({ pokemon, species }) => {
 
     return (
         <Fragment>
-            <Title tagName="h2">
+            <Title>
                 Characteristic
             </Title>
 
@@ -53,7 +54,7 @@ const Pokemon: FC<PropsType> = ({ pokemon, species }) => {
                 Weight: {weight}
             </div>
 
-            <Title tagName="h2">
+            <Title>
                 Abilities
             </Title>
 
@@ -68,6 +69,10 @@ const Pokemon: FC<PropsType> = ({ pokemon, species }) => {
             </ul>
 
             <div>
+                <Title>
+                    Gallery
+                </Title>
+
                 <Gallery
                     pictures={Object.entries(sprites).reduce((result: PicturesListType, [alias, url]) => {
                         if (!url) {
@@ -85,7 +90,13 @@ const Pokemon: FC<PropsType> = ({ pokemon, species }) => {
                 />
             </div>
 
-            <Species species={species} />
+            <div>
+                <Title>
+                    Species
+                </Title>
+
+                <Species species={species} />
+            </div>
         </Fragment>
     );
 };

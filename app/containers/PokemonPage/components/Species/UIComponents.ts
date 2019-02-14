@@ -1,11 +1,11 @@
 import styled from '@Utils/styled';
 import { readableColor } from 'polished';
 
-interface NamePropsType {
+interface ContainerPropsType {
     color: string;
 }
 
-export const Name = styled.div<NamePropsType>`
+export const Container = styled.div<ContainerPropsType>`
     padding: .5rem 1rem;
 
     background-color: ${({ color }) => color};

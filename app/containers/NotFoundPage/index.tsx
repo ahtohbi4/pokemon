@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
 
-import Title from '@Components/Title';
+import PageTitle from '@Components/PageTitle';
 import { InjectRouterPropsType } from '@Containers/Router';
 
 interface PropsType extends InjectRouterPropsType {}
@@ -16,9 +16,9 @@ export default class NotFoundPage extends PureComponent<PropsType> {
                     </title>
                 </Helmet>
 
-                <Title>
+                <PageTitle>
                     404. Page not found.
-                </Title>
+                </PageTitle>
             </Fragment>
         );
     }

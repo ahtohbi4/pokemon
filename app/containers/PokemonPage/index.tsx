@@ -16,7 +16,7 @@ import {
 } from './types';
 
 import Link from '@Components/Link';
-import Title from '@Components/Title';
+import PageTitle from '@Components/PageTitle';
 
 import Pokemon from './components/Pokemon';
 
@@ -83,9 +83,9 @@ class PokemonPage extends PureComponent<PropsType> {
                     </title>
                 </Helmet>
 
-                <Title>
+                <PageTitle>
                     {this.name}
-                </Title>
+                </PageTitle>
 
                 <Pokemon
                     pokemon={pokemon}

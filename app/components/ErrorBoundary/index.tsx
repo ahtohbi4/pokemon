@@ -1,6 +1,6 @@
 import React, { Children, PureComponent } from 'react';
 
-import Title from '@Components/Title';
+import PageTitle from '@Components/PageTitle';
 
 interface PropsType {}
 
@@ -23,9 +23,9 @@ export default class ErrorBoundary extends PureComponent<PropsType, StateType> {
 
         if (hasError) {
             return (
-                <Title>
+                <PageTitle>
                     Something went wrong.
-                </Title>
+                </PageTitle>
             );
         }
 

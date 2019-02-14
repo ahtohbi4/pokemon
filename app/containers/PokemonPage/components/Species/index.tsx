@@ -3,9 +3,8 @@ import React, { FC, memo } from 'react';
 import { StoredSpeciesDataType } from '../../types';
 
 import Loader from '@Components/Loader';
-import Title from '@Components/Title';
 
-import { Name } from './UIComponents';
+import { Container } from './UIComponents';
 
 interface PropsType {
     species: StoredSpeciesDataType;
@@ -35,15 +34,9 @@ const Species: FC<PropsType> = ({ species }) => {
     const { color: { name: color }, name } = data;
 
     return (
-        <div>
-            <Title tagName="h2">
-                Species
-            </Title>
-
-            <Name color={color}>
-                {name}
-            </Name>
-        </div>
+        <Container color={color}>
+            {name}
+        </Container>
     );
 };
 
