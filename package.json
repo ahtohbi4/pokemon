@@ -5,7 +5,7 @@
   "author": "Alexandr Antonov",
   "license": "MIT",
   "scripts": {
-    "lint": "tslint --type-check --config tslint.json ./**/*.{js,jsx,ts,tsx}",
+    "lint": "tslint --config ./tslint.json --project ./tsconfig.json ./**/*.{js,jsx,ts,tsx}",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn run type-check -- --watch",
     "start": "webpack-dev-server --progress --colors --mode development",
@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-     "*.{jsx?,tsx?}": ["yarn lint"]
+     "*.{js,ts,tsx}": ["yarn run lint"]
   },
   "dependencies": {
     "@types/react": "^16.7.20",
