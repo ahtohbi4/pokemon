@@ -17,7 +17,9 @@
     }
   },
   "lint-staged": {
-     "*.{js,ts,tsx}": ["yarn run lint"]
+    "*.{js,ts,tsx}": [
+      "yarn run lint"
+    ]
   },
   "dependencies": {
     "@types/react": "^16.7.20",
@@ -26,7 +28,7 @@
     "@types/react-redux": "^7.0.0",
     "@types/styled-components": "^4.1.6",
     "axios": "^0.18.0",
-    "create-action-ts": "^0.6.0",
+    "create-action-ts": "^1.0.1",
     "polished": "^2.3.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

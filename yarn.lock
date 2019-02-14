@@ -1735,9 +1735,9 @@ cosmiconfig@^5.0.2, cosmiconfig@^5.0.7:
     js-yaml "^3.9.0"
     parse-json "^4.0.0"
 
-create-action-ts@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/create-action-ts/-/create-action-ts-0.6.0.tgz#4bcc6adcdfee635054889e725f01e245354ae472"
+create-action-ts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/create-action-ts/-/create-action-ts-1.0.1.tgz#c04ef12b8f5e299ba8703a7da264c8715b9c1f34"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
