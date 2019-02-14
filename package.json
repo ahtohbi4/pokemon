@@ -5,6 +5,7 @@
   "author": "Alexandr Antonov",
   "license": "MIT",
   "scripts": {
+    "lint": "tslint --config tslint.json ./**/*.{js,jsx,ts,tsx}",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn run type-check -- --watch",
     "start": "webpack-dev-server --progress --colors --mode development",
@@ -42,6 +43,7 @@
     "image-webpack-loader": "^4.6.0",
     "redux-devtools-extension": "^2.13.7",
     "svg-url-loader": "^2.3.2",
+    "tslint": "^5.12.1",
     "typescript": "^3.2.4",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
