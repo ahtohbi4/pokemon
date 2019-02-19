@@ -51,7 +51,20 @@ class PokemonPage extends PureComponent<PropsType> {
         getPokemonRequest(this.id);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps: PropsType) {
+        const { router: { location: { query: { id: prevId } } } } = prevProps;
+
+        if (this.id !== prevId) {
+            const { resetHeaderColor } = this.context;
+            const { getPokemonRequest, resetPokemon } = this.props;
+
+            resetHeaderColor();
+            resetPokemon();
+            getPokemonRequest(this.id);
+
+            return;
+        }
+
         const { species: { data } } = this.props;
 
         if (!data) {

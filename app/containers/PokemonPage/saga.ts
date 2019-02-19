@@ -27,8 +27,16 @@ function* getPokemonSaga(action: ReturnType<GetPokemonRequestActionCreatorType>)
         const { species: { name: speciesSlug } } = pokemon;
 
         yield put(getSpeciesRequest(speciesSlug));
-    } catch (error) {
-        yield put(getPokemonFailure(error));
+    } catch ({ response: { status } = {} }) {
+        switch (status) {
+            case 404:
+                yield put(getPokemonFailure(`Couldn't find Pokemon with ID ${id}.`));
+                break;
+
+            default:
+                yield put(getPokemonFailure('Something went wrong. Please try later.'));
+                break;
+        }
     }
 }
 
@@ -39,8 +47,16 @@ function* getSpeciesSaga(action: ReturnType<GetSpeciesRequestActionCreatorType>)
         const { data: species } = yield call(api.get, interpolate(ApiUrls.GET_SPECIES, { id }));
 
         yield put(getSpeciesSuccess(species));
-    } catch (error) {
-        yield put(getSpeciesFailure(error));
+    } catch ({ response: { status } = {} }) {
+        switch (status) {
+            case 404:
+                yield put(getSpeciesFailure(`Couldn't find Species with ID ${id}.`));
+                break;
+
+            default:
+                yield put(getSpeciesFailure('Something went wrong. Please try later.'));
+                break;
+        }
     }
 }
 

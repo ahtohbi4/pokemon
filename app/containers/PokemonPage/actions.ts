@@ -26,9 +26,9 @@ type GetPokemonSuccessActionCreatorType = typeof getPokemonSuccess;
 /**
  * Creates an action with a failed response of the pokemon's data.
  *
- * @param {*} [error]
+ * @param {string} [error]
  */
-export const getPokemonFailure = (error: any) => createAction(ActionTypeKeys.GET_POKEMON_FAILURE, error);
+export const getPokemonFailure = (error: string) => createAction(ActionTypeKeys.GET_POKEMON_FAILURE, error);
 type GetPokemonFailureActionCreatorType = typeof getPokemonFailure;
 
 /**
@@ -56,9 +56,9 @@ type GetSpeciesSuccessActionCreatorType = typeof getSpeciesSuccess;
 /**
  * Creates an action with a failed response of the pokemon's species data.
  *
- * @param {*} [error]
+ * @param {string} [error]
  */
-export const getSpeciesFailure = (error: any) => createAction(ActionTypeKeys.GET_SPECIES_FAILURE, error);
+export const getSpeciesFailure = (error: string) => createAction(ActionTypeKeys.GET_SPECIES_FAILURE, error);
 type GetSpeciesFailureActionCreatorType = typeof getSpeciesFailure;
 
 export type ActionType =
